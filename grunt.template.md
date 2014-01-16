@@ -32,7 +32,7 @@ grunt.template.setDelimiters(name)
 ```
 
 ### grunt.template.addDelimiters
-Adiciona um conjunto de [Lo-Dash template](http://lodash.com/docs/#template) delimitadores. Você provavelmente não precisará usar esse método, pois os delimitadores pré-embutidos devem já ser suficientes, entretanto você tem a opção de adicionar delimitadores no estilo `{% %}` ou `[% %]`
+Adiciona um conjunto de delimitadore [Lo-Dash template](http://lodash.com/docs/#template). Você provavelmente não precisará usar esse método, pois os delimitadores pré-embutidos devem já ser suficientes, entretanto você tem a opção de adicionar delimitadores no estilo `{% %}` ou `[% %]`
 
 ```js
 grunt.template.addDelimiters(name, opener, closer)
@@ -41,7 +41,7 @@ grunt.template.addDelimiters(name, opener, closer)
 ## Helpers
 
 ### grunt.template.date
-Formata uma data usando a [dateformat library](https://github.com/felixge/node-dateformat).
+Formata uma data usando a [biblioteca dateformat](https://github.com/felixge/node-dateformat).
 
 ```js
 grunt.template.date(date, format)
@@ -54,7 +54,7 @@ grunt.template.date(847602000000, 'yyyy-mm-dd') // '1996-11-10'
 ```
 
 ### grunt.template.today
-Formata a data de hoje usando a [dateformat library](https://github.com/felixge/node-dateformat).
+Formata a data de hoje usando a [biblioteca dateformat](https://github.com/felixge/node-dateformat).
 
 ```js
 grunt.template.today(format)
@@ -65,3 +65,5 @@ Nesse exemplo, a data de hoje é formatada como um ano de 4 dígitos.
 ```js
 grunt.template.today('yyyy') // '2014'
 ```
+
+_(somebody remind me to update this date every year so the docs appear current)_
