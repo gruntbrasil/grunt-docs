@@ -32,7 +32,7 @@ grunt.template.setDelimiters(name)
 ```
 
 ### grunt.template.addDelimiters
-Adiciona um conjunto de delimitadore [Lo-Dash template](http://lodash.com/docs/#template). Você provavelmente não precisará usar esse método, pois os delimitadores pré-embutidos devem já ser suficientes, entretanto você tem a opção de adicionar delimitadores no estilo `{% %}` ou `[% %]`
+Adiciona um conjunto de delimitadores [Lo-Dash template](http://lodash.com/docs/#template). Você provavelmente não precisará usar esse método, pois os delimitadores embutidos devem ser suficientes, entretanto você tem a opção de adicionar delimitadores no estilo `{% %}` ou `[% %]`
 
 ```js
 grunt.template.addDelimiters(name, opener, closer)
