@@ -1,55 +1,55 @@
-Grunt and Grunt plugins are installed and managed via [npm](https://npmjs.org/), the [Node.js](http://nodejs.org/) package manager.
+Grunt e os plugins para Grunt são instalados e gerenciados via [npm](https://npmjs.org/), o gerenciador de pacotes do [Node.js](http://nodejs.org/).
 
 
-_Grunt 0.4.x requires stable Node.js versions `>= 0.8.0`. Odd version numbers of Node.js are considered unstable development versions._
+_Grunt 0.4.x requer uma versão estável do Node.js `>= 0.8.0`. Versões ímpares do Node.js são consideradas versões de desenvolvimento (instáveis)._
 
-## Installing the CLI
-**If you're upgrading from Grunt 0.3, please see [Grunt 0.3 Notes](upgrading-from-0.3-to-0.4#grunt-0.3-notes)**
+## Instalando a CLI
+**Se você está fazendo o upgrade do Grunt 0.3, por favor veja as [notas de atualização do Grunt 0.3](upgrading-from-0.3-to-0.4#grunt-0.3-notes)**
 
-In order to get started, you'll want to install Grunt's command line interface (CLI) globally.  You may need to use sudo (for OSX, *nix, BSD etc) or run your command shell as Administrator (for Windows) to do this.
+Para começar, você precisa instalar a interface de linha de comando (CLI) globalmente. Talvez você precise usar sudo (para OSX, *nix, BSD etc) ou executar o prompt de comando como Administrador (Windows) para realizar a instalação.
 
 ```shell
 npm install -g grunt-cli
 ```
 
-This will put the `grunt` command in your system path, allowing it to be run from any directory.
+Isto irá adicionar o comando `grunt` ao path do seu sistema operacional, permitindo que você o execute a partir de qualquer diretório.
 
-Note that installing `grunt-cli` does not install the Grunt task runner!  The job of the Grunt CLI is simple: run the version of Grunt which has been installed next to a `Gruntfile`.
-This allows multiple versions of Grunt to be installed on the same machine simultaneously.
+Perceba que instalar o `grunt-cli` não instala o Grunt em si! O trabalho do Grunt CLI é simples: rodar a versão do Grunt que está no `Gruntfile`.
+Isto permite que múltiplas versões do Grunt sejam instaladas na mesma máquina.
 
-## How the CLI works
+## Como a CLI funciona
 
-Each time `grunt` is run, it looks for a locally installed Grunt using node's `require()` system. Because of this, you can run `grunt` from any subfolder in your project.
+Toda vez que o `grunt` é executado, ele procura por um Grunt instalado localmente através do sistema `require()` do node. Assim, você pode executar o `grunt` de qualquer subdiretório do seu projeto.
 
-If a locally installed Grunt is found, the CLI loads the local installation of the Grunt library, applies the configuration from your `Gruntfile`, and executes any tasks you've requested for it to run.
+Se uma instalação local do Grunt é encontrada, a CLI carrega a biblioteca Grunt instalada localmente, aplica a configuração presente no seu `Gruntfile`, e executa as tarefas que você solicitou que fossem executadas.
 
-*To really understand what is happening, [read the code](https://github.com/gruntjs/grunt-cli/blob/master/bin/grunt).  It's very short.*
+*Para entender de verdade o que acontece, [veja o código](https://github.com/gruntjs/grunt-cli/blob/master/bin/grunt). É bem pequeno.*
 
-## Working with an existing Grunt project
-Assuming that the Grunt CLI has been installed and that the project has already been configured with a `package.json` and a `Gruntfile`, it's very easy to start working with Grunt:
+## Trabalhando com um projeto Grunt já existente
+Assumindo que você já possui o Grunt CLI instalado e que o projeto já está configurado com um `package.json` e um `Gruntfile`, é muito fácil começar a trabalhar com Grunt:
 
-1. Change to the project's root directory.
-1. Install project dependencies with `npm install`.
-1. Run Grunt with `grunt`.
+1. Vá até o diretório raiz do projeto. 
+2. Instale as dependências do projeto com `npm install`.
+3. Execute o Grunt com `grunt`.
 
-That's really all there is to it. Installed Grunt tasks can be listed by running `grunt --help` but it's usually a good idea to start with the project's documentation.
+Isso é todo o necessário. As tarefas Grunt instaladas podem ser listadas executando `grunt --help`, mas é sempre uma ótima idéia começar com a documentação do projeto.
 
-## Preparing a new Grunt project
-A typical setup will involve adding two files to your project: `package.json` and the `Gruntfile`.
+## Preparando um novo projeto Grunt
+Uma configuração inicial típica irá adicionar dois arquivo ao seu projeto: `package.json` e um `Gruntfile`.
 
-**package.json**: This file is used by [npm] to store metadata for projects published as npm modules.  You will list grunt and the Grunt plugins your project needs as [devDependencies] in this file.
-
-**Gruntfile**: This file is named `Gruntfile.js` or `Gruntfile.coffee` and is used to configure or define tasks and load Grunt plugins. 
+**package.json**: Este arquivo é usado pelo [npm] para guardar metadados para projetos publicados como módulos npm. Você irá listar o Grunt e os plugins Grunt que seu projeto precisa como [devDependencies] neste arquivo.
+ 
+**Gruntfile**: Este arquivo é chamado `Gruntfile.js` ou `Gruntfile.coffee` e é utilizado para configurar ou definir tarefas e carregar os plugins Grunt.
 
 ## package.json
 
-The `package.json` file belongs in the root directory of your project, next to the `Gruntfile`, and should be committed with your project source.  Running `npm install` in the same folder as a `package.json` file will install the correct version of each dependency listed therein.
+O arquivo `package.json` fica no diretório raiz do seu projeto, junto com o `Gruntfile`, e deve ser commitado com o código fonte do seu projeto. Executando `npm install` no mesmo diretório que um arquivo `package.json` irá instalar a versão correta de cada dependência listada neste.
 
-There are a few ways to create a `package.json` file for your project:
+Existem algumas maneiras de criar um arquivo `package.json` para seu projeto:
 
-* Most [grunt-init] templates will automatically create a project-specific `package.json` file.
-* The [npm init] command will create a basic `package.json` file.
-* Start with the example below, and expand as needed, following this [specification][json].
+* A maioria dos modelos de [grunt-init] irá criar um `package.json` específico para o projeto.
+* O comando [npm init] irá criar um `package.json` simples.
+* Começar com o exemplo abaixo, expandindo conforme necessário, seguindo esta [especificação][json]
 
 ```js
 {
@@ -64,34 +64,34 @@ There are a few ways to create a `package.json` file for your project:
 }
 ```
 
-### Installing Grunt and gruntplugins
-The easiest way to add Grunt and gruntplugins to an existing `package.json` is with the command `npm install <module> --save-dev`.  Not only will this install `<module>` locally, but it will automatically be added to the [devDependencies] section, using a [tilde version range].
+### Instalando Grunt e plugins Grunt
+A maneira mais fácil de adicionar o Grunt e plugins Grunt para um `package.json` existente é executando o comando `npm install <module> --save-dev`. Isto não só irá instalar o `<module>` localmente, como irá adicioná-lo para a seção [devDependencies] automaticamente, usando [intervalo de versão com til][tilde version range].
 
-For example, this will install the latest version of Grunt in your project folder, adding it to your devDependencies:
+Por exemplo, isto irá instalar a última versão do Grunt no diretório do seu projeto e adicioná-lo ao seu devDepencencies:
 
 ```shell
 npm install grunt --save-dev
 ```
 
-The same can be done for gruntplugins and other node modules. Be sure to commit the updated `package.json` file with your project when you're done!
+O mesmo pode ser feito para os plugins Grunt e outros módulos node. Certifique-se de commitar o `package.json` atualizado com seu projeto quando terminar!
 
-## The Gruntfile
-The `Gruntfile.js` or `Gruntfile.coffee` file is a valid JavaScript or CoffeeScript file that belongs in the root directory of your project, next to the `package.json` file, and should be committed with your project source.
+## O Gruntfile
+ O arquivo `Gruntfile.js` ou `Gruntfile.coffee` é um JavaScript válido ou arquivo CoffeeScript que pertence ao diretório raiz do seu projeto, junto com o arquivo `package.json`, e deve ser commitado com o código fonte do seu projeto.
 
-A `Gruntfile` is comprised of the following parts:
+Um `Gruntfile` é composto pelas seguintes partes:
 
-* The "wrapper" function
-* Project and task configuration
-* Loading Grunt plugins and tasks
-* Custom tasks
+* A função "empacotadora"
+* Configurações do projeto e tarefas
+* Carregar plugins do Grunt e tarefas
+* Tarefas customizadas
 
-### An example Gruntfile
-In the following `Gruntfile`, project metadata is imported into the Grunt config from the project's `package.json` file and the [grunt-contrib-uglify] plugin's `uglify` task is configured to minify a source file and generate a banner comment dynamically using that metadata. When `grunt` is run on the command line, the `uglify` task will be run by default.
+### Um exemplo de Gruntfile
+No `Gruntfile` a seguir, os metadados são importados do arquivo `package.json` do projeto para as configurações do Grunt e a tarefa `uglify` do plugin [grunt-contrib-uglify] é configurada para minificar o arquivo fonte e gerar um banner de comentário dinamicamente usando estes metadados. Quando `grunt` é executado na linha de comando, a tarefa `uglify` será executada por padrão.
 
 ```js
 module.exports = function(grunt) {
 
-  // Project configuration.
+  // Configuração do projeto.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     uglify: {
@@ -105,37 +105,37 @@ module.exports = function(grunt) {
     }
   });
 
-  // Load the plugin that provides the "uglify" task.
+  // Carrega o plugin que disponibiliza a tarefa "uglify"
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  // Default task(s).
+  // Tarefas padrão.
   grunt.registerTask('default', ['uglify']);
 
 };
 ```
 
-Now that you've seen the whole `Gruntfile`, let's look at its component parts.
+Agora que você viu todo o `Gruntfile`, vamos ver as partes que o compõe.
 
-### The "wrapper" function
-Every `Gruntfile` (and gruntplugin) uses this basic format, and all of your Grunt code must be specified inside this function:
+### A função "empacotadora"
+Todo `Gruntfile` (e gruntplugin) usa este formato básico, e todo seu código Grunt deve ser especificado dentro da função:
 
 ```js
 module.exports = function(grunt) {
-  // Do grunt-related things in here
+  // coisas do Grunt aqui.
 };
 ```
 
-### Project and task configuration
-Most Grunt tasks rely on configuration data defined in an object passed to the [[grunt.initConfig|grunt#grunt.initconfig]] method.
+### Configuração de projeto e tarefas
+A maior parte das tarefas Grunt depende dos dados de configuração definidos num objeto passado para o método [[grunt.initConfig|grunt#grunt.initconfig]].
 
-In this example, `grunt.file.readJSON('package.json')` imports the JSON metadata stored in `package.json` into the grunt config. Because `<% %>` template strings may reference any config properties, configuration data like filepaths and file lists may be specified this way to reduce repetition.
+Neste exemplo, `grunt.file.readJSON('package.json')` importa os metadados do JSON armazenado no `package.json` nas configurações do grunt. O modelo de strings `<% %>` deve referenciar todas as propriedade de configuração, e dados de configuração como caminhos e listas de arquivos deve ser especificados desta forma para reduzir repetição.
 
-You may store any arbitrary data inside of the configuration object, and as long as it doesn't conflict with properties your tasks require, it will be otherwise ignored. Also, because this is JavaScript, you're not limited to JSON; you may use any valid JS here. You can even programmatically generate the configuration if necessary.
+Desde que não conflite com propriedades que suas tarefas requisitem você pode guardar qualquer dado arbitrário dentro do objeto de configuração, caso contrário estes dados serão ignorados. E como isto é JavaScript, você não está limitado ao JSON; você pode usar qualquer JS válido aqui. Você pode até gerar a configuração programaticamente se necessário.
 
-Like most tasks, the [grunt-contrib-uglify] plugin's `uglify` task expects its configuration to be specified in a property of the same name. Here, the `banner` option is specified, along with a single uglify target named `build` that minifies a single source file to a single destination file.
+Como a maioria das tarefas, a `uglify` do plugin [grunt-contrib-uglify] espera que sua configuração esteja na propriedade com mesmo nome. Aqui, a opção `banner` é especificada, junto com um único alvo chamado `build` que minifica um único arquivo fonte para um único arquivo de destino.
 
 ```js
-// Project configuration.
+// Configuração do projeto
 grunt.initConfig({
   pkg: grunt.file.readJSON('package.json'),
   uglify: {
@@ -150,30 +150,30 @@ grunt.initConfig({
 });
 ```
 
-### Loading Grunt plugins and tasks
-Many commonly used tasks like [concatenation], [minification][grunt-contrib-uglify] and [linting] are available as [grunt plugins](https://github.com/gruntjs). As long as a plugin is specified in `package.json` as a dependency, and has been installed via `npm install`, it may be enabled inside your `Gruntfile` with a simple command:
+### Carregando plugins Grunt e tarefas
+Muitas tarefas comumente usadas como [concatenation], [minification][grunt-contrib-uglify] e [linting] estão disponíveis como [plugins Grunt](https://github.com/gruntjs). Desde que um plugin esteja especificado no `package.json` como uma dependência, e foi instalado via `npm install`, este pode ser habilitado no seu `Gruntfile` com um simples comando:
 
 ```js
-// Load the plugin that provides the "uglify" task.
+// Carrega o plugin que disponibiliza a tarefa "uglify".
 grunt.loadNpmTasks('grunt-contrib-uglify');
 ```
 
-**Note:** the `grunt --help` command will list all available tasks.
+**Nota:** o comando `grunt --help` irá listar todas as tarefas disponíveis.
 
-### Custom tasks
-You can configure Grunt to run one or more tasks by default by defining a `default` task. In the following example, running `grunt` at the command line without specifying a task will run the `uglify` task. This is functionally the same as explicitly running `grunt uglify` or even `grunt default`. Any number of tasks (with or without arguments) may be specified in the array.
+### Tarefas customizadas
+Você pode configurar o Grunt para executar uma ou mais tarefas por padrão definindo uma tarefa `defaul`. No exemplo a seguir, executando `grunt` na linha de comando sem especificar uma tarefa irá executar a tarefa `uglify`. Isso é o mesmo que explicitamente executar `grunt uglify` ou até `grunt default`. Qualquer quantidade de tarefas (com ou sem argumentos) podem ser especificadas em uma array.
 
 ```js
-// Default task(s).
+// Tarefas padrão.
 grunt.registerTask('default', ['uglify']);
 ```
 
-If your project requires tasks not provided by a Grunt plugin, you may define custom tasks right inside the `Gruntfile`. For example, this `Gruntfile` defines a completely custom `default` task that doesn't even utilize task configuration:
+Se o seu projeto requer tarefas não disponibilizadas através de plugins Grunt, você pode definir tarefas customizadas diretamente no `Gruntfile`. Por exemplo, este `Gruntfile` define uma tarefa `default` completamente customizada que sequer utiliza configuração de tarefas:
 
 ```js
 module.exports = function(grunt) {
 
-  // A very basic default task.
+  // Uma tarefa bem simples.
   grunt.registerTask('default', 'Log some stuff.', function() {
     grunt.log.write('Logging some stuff...').ok();
   });
@@ -181,14 +181,14 @@ module.exports = function(grunt) {
 };
 ```
 
-Custom project-specific tasks don't need to be defined in the `Gruntfile`; they may be defined in external `.js` files and loaded via the [[grunt.loadTasks|grunt#grunt.loadtasks]] method.
+Tarefas customizadas para projetos específicos não precisam ser definidas no `Gruntfile`; elas podem ser definidas externamente em arquivos `.js` e carregadas pelo método [[grunt.loadTasks|grunt#grunt.loadtasks]].
 
-## Further Reading
+## Leitura Adicional
 
-* The [[Installing grunt]] guide has detailed information about installing specific, production or in-development, versions of Grunt and grunt-cli.
-* The [[Configuring Tasks]] guide has an in-depth explanation on how to configure tasks, targets, options and files inside the `Gruntfile`, along with an explanation of templates, globbing patterns and importing external data.
-* The [[Creating Tasks]] guide lists the differences between the types of Grunt tasks and shows a number of sample tasks and configurations.
-* For more information about writing custom tasks or Grunt plugins, check out the [[developer documentation|grunt]].
+* O guia [[Installing grunt]] tem informações detalhadas sobre como instalar versões específicas, para produção ou para desenvolvimento, do Grunt e grunt-cli.
+* O guia [[Configuring Tasks]] tem uma explicação aprofundada de como configurar tarefas, destinos, opções e arquivos dentro do `Gruntfile`, junto com uma explicação sobre modelos, globbing patterns e importação de dados externos.
+* O guia [[Creating Tasks]] lista as diferenças entre os tipos de tarefas Grunt e mostra diversos exemplos de tarefas e configurações.
+* Para mais informações sobre como desenvolver tarefas customizadas ou plugins Grunt, veja a [[developer documentation|grunt]].
 
 [npm]: https://npmjs.org/
 [devDependencies]: https://npmjs.org/doc/json.html#devDependencies
