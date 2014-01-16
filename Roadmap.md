@@ -1,16 +1,16 @@
 ## grunt 0.5
 
-1. Tasks as npm modules that can be required and run independent of any task runner (if you want to manually build a compliant config object to execute it).  Can pipe data between multiple tasks (think coffescript transpilation + uglify in a single step).  All task output emitted as events.  See: https://github.com/tkellen/node-task
+1. Tarefas são módulos npm que podem ser requeridos e executam independentemente de qualquer executor de tarefa (se você quiser construir manualmente um objeto de configuração compatível para executa-lo).  Pode canalizar dados entre múltiplas tarefas (pense em um coffescript transpilation + uglify em um único passo). Toda saída de tarefa emite um evento.  Veja: https://github.com/tkellen/node-task
 
-2. A library for glob expansion that handles arrays of globs, negation, etc. See https://github.com/cowboy/node-globule
+2. Uma biblioteca para a expansão glob que lida com arrays de glob, negação, etc.  Veja https://github.com/cowboy/node-globule
 
-3. A library for parsing configurations (merge options, template expansion, glob expansion (using lib from item #2) from the current Gruntfile format, into a valid form for running node-task compliant modules.  Will support user-defined middleware for controlling config output.
+3.Uma biblioteca para a analisar a configuração (mesclar opções, expandir de template, expansão de glob (usando a lib do item #2) do formato do Gruntfile atual, de forma válida a rodar módulos compatíveis com node-task.  Irá suportar middleware definido pelo usuário para controlar a configuração de saída.
 
-3. A task runner which uses config parsing library from item #3 to execute node-task compatible modules (can be used programmatically, or via cli).  Supports defining "alias" tasks which compile a set of tasks which can be run in parallel  See: http://github.com/gruntjs/grunt
+4. Um executor de tarefa que usa a biblioteca de análise de configuração do item #3 para executar módulos compatíveis com node-task (pode ser usado programaticamente, ou via cli).  Suporta definir tarefas "pseudônimas" que compilam um conjunto de tarefas que podem ser executadas em paralelo  Veja: http://github.com/gruntjs/grunt
 
-4. A logger to listen to events and output them to the console.  Deals with stderr/stdout, or Grunt itself has this built in. See: https://github.com/cowboy/node-prolog
+5. Um logger para ouvir eventos e envia-las para o console.  Lida com stderr/stdout, ou o próprio Grunt tem isto embutido. Veja: https://github.com/cowboy/node-prolog
 
-**0.5 Gruntfile Ideas**
+**0.5 Idéias para o Gruntfile**
 ```js
 var grunt = require('grunt');
 
@@ -20,8 +20,8 @@ grunt.initConfig({
     dryRun: true,
     stack: true,
     verbose: true,
-    // what about defining loggers specific to a task?
-    // is this required in your gruntfile or on by default?
+    // O que sobre definir loggers específicos para a tarefa?
+    // Isto é obrigatório no seu Gruntfile ou está por padrão?
     logger: [require('grunt-logger')] 
   },
   jshint: {
@@ -37,33 +37,33 @@ grunt.initConfig({
 
 grunt.registerTask(require('grunt-contrib-jshint'));
 grunt.registerTask(require('grunt-contrib-concat'));
-grunt.registerTask(require('grunt-contrib-uglify'), 'min'); // optional second param renames
+grunt.registerTask(require('grunt-contrib-uglify'), 'min'); // Renomeações opcionais no segundo parâmetro
 
-// generates a node-task compliant object and runs grunt.registerTask on it
+// Gera um objeto compatível com node-task e executa grunt.registerTask em que
 grunt.registerTask('name','description', function (config) {
   //...
 });
 
-// load a set of tasks to be run in parallel
+// Carregar um conjunto de tarefas para ser rodado em paralelo
 grunt.registerTask('name', ['jshint', 'concat'], { parallel:true });
 
-// i think the cli should call this, but putting it here because you mentioned thinking it should go here.
+// eu penso que o cli deveria chamar isso, mas colocando aqui por você mencionar estar pensando em como isso deveria ser.
 grunt.run();
 ```
-***Please ignore the section below.  It is a jumbled mess/work in progress and should not be considered anything resembling a roadmap.***
+***Por favor, ignore a seção abaixo.  É uma confusa bagunça/trabalho em andamento e não deve ser considerado qualquer coisa parecida com um roteiro.***
 
-527 - parallel execution of tasks
-545 - conditional compilation (probably belongs on the watch task)
-493 - cwd handling
+527 - execução paralela de tarefas
+545 - compilação condicional (provavelmente pertence à tarefas assistidas)
+493 - Manuseio de cwd
 
-* more specific error codes
+* mais erros de código especificos
   * Task not found
   * Task failed
   * Task requirement not met
   * Config requirement not met
 
 ## grunt-log
-* Log to stderr/stdout. [#586](https://github.com/gruntjs/grunt/issues/586) [#570](https://github.com/gruntjs/grunt/issues/570) [#120](https://github.com/gruntjs/grunt/issues/120)
+* Registro do stderr/stdout. [#586](https://github.com/gruntjs/grunt/issues/586) [#570](https://github.com/gruntjs/grunt/issues/570) [#120](https://github.com/gruntjs/grunt/issues/120)
 * https://github.com/tkellen/grunt-decoupled/tree/master/grunt-log
 
 ## grunt-file
