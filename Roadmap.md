@@ -56,7 +56,7 @@ grunt.run();
 545 - compilação condicional (provavelmente pertence à tarefas assistidas)
 493 - Manuseio de cwd
 
-* mais códigos de erros especificos
+* mais códigos de erros específicos
   * Task not found
   * Task failed
   * Task requirement not met
