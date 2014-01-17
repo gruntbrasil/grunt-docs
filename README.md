@@ -2,7 +2,7 @@
 
 Tradução da documentação do [GruntJS](http://gruntjs.com/)
 
-> **Nota importante:** Os últimos commits antes deste fork foi em **09 de janeiro de 2014** commits depois desta data precisam ser revisados, para saber se é preciso atualizar a tradução.
+> **Nota importante:** Os últimos commits antes deste fork foi em **09 de janeiro de 2014**. Commits depois desta data precisam ser revisados, para saber se é preciso atualizar a tradução.
 
 ### Sumário
 
@@ -38,7 +38,7 @@ Tradução da documentação do [GruntJS](http://gruntjs.com/)
 6. Outros
   * [Por dentro das tarefas](Inside-Tasks.md)
   * [Códigos de saída](Exit-Codes.md)
-
+7. [Blog](/blog)
 
 
 
@@ -49,7 +49,7 @@ Tradução da documentação do [GruntJS](http://gruntjs.com/)
 1. Faça o *fork* deste repositório
 2. Certifique-se de que está no *branch* **pt-br** ou faça o *checkout* para o mesmo.
 3. Realize a tradução do arquivo desejado, mas observe se o mesmo já está sendo traduzido
-4. Caso o arquivo não esteja traduzido ou a sua tradução não esteja em andamento, adicione a label *translating* na respectiva *issue* do arquivo e inicie a sua tradução.
+4. Caso o arquivo não esteja traduzido ou a sua tradução não esteja em andamento, comente na *issue* relacionada ao arquivo que você irá traduzir para os moderadores adicionarem a label *translating* na respectiva *issue* do arquivo.
 5. Faça um *Pull Request* para enviar o arquivo traduzido.
 
 
@@ -63,6 +63,8 @@ Tradução da documentação do [GruntJS](http://gruntjs.com/)
 
 ### Algumas recomendações
 
-- Favor não traduzir termos técnicos. 
+- Favor não traduzir termos técnicos.
+- Procure traduzir uma *issue* de cada vez
 - Utilize notas de rodapé para termos técnicos com o seu respectivo link externo para mais informações.
 - Mensagens de *commits* devem ser em **pt-BR**.
+- Quando algum link externo em outro idioma for linkado em algum documento, traduzir o título da página e colocar em parênteses (em `nome da língua`). Ex.: [Uma nova palavra: "transpilation"](http://forum.world.st/Ah-a-new-word-transpilation-td4676435.html) (em inglês).
