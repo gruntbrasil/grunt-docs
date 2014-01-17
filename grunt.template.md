@@ -1,17 +1,17 @@
-Template strings can be processed manually using the provided template functions. In addition, the config.get method (used by many tasks) automatically expands `<% %>` style template strings specified as config data inside the `Gruntfile`.
+Strings de template podem ser processadas manualmente usando as funções de template fornecidas. Além disso, o método config.get (usado por muitas tarefas) automaticamente expande as strings de template `<% %>` especificadas como dados de configuração no `Gruntfile`.
 
 ### grunt.template.process
-Process a [Lo-Dash template](http://lodash.com/docs/#template) string. The `template` argument will be processed recursively until there are no more templates to process.
+Processa uma string [Lo-Dash template](http://lodash.com/docs/#template). O argumento `template` será processado recursivamente até não existir mais templates para processar.
 
-The default data object is the entire config object, but if `options.data` is set, that object will be used instead. The default template delimiters are `<% %>` but if `options.delimiters` is set to a custom delimiter name, those template delimiters will be used instead.
+O objeto de dados padrão é o objeto de configuração inteiro, mas se `options.data` está configurado, este objeto será usado no lugar. O delimitadores padrão de template são `<% %>` mas se `options.delimiters` está configurado com um delimitador customizado, esses delimitadores de template serão usados no lugar.
 
 ```js
 grunt.template.process(template [, options])
 ```
 
-Inside templates, the `grunt` object is exposed so that you can do things like `<%= grunt.template.today('yyyy') %>`. _Note that if the data object already has a `grunt` property, the `grunt` API will not be accessible in templates._
+Nos templates, o objeto `grunt` é exposto para que seja possível fazer coisas como `<%= grunt.template.today('yyyy') %>`. _Perceba que se um objeto de dados já tem uma propriedade `grunt`, a API do `grunt` não ficará acessível nesses templates._
 
-In this example, the `baz` property is processed recursively until there are no more `<% %>` templates to process.
+Nesse exemplo, a propriedade `baz` é processada recursivamente até que não existam mais templates `<% %>` para processar.
 
 ```js
 var obj = {
@@ -23,16 +23,16 @@ grunt.template.process('<%= baz %>', {data: obj}) // 'abcde'
 ```
 
 ### grunt.template.setDelimiters
-Set the [Lo-Dash template](http://lodash.com/docs/#template) delimiters to a predefined set in case you `grunt.util._.template` needs to be called manually. The `config` delimiters `<% %>` are included by default.
- 
-_You probably won't need to use this method, because you'll be using `grunt.template.process` which uses this method internally._
+Configura os delimitadores [Lo-Dash template](http://lodash.com/docs/#template) para um conjunto pré-definido no caso de seu template `grunt.util._.template` precisar ser chamado manualmente. O delimitador `config` `<% %>` é incluído por padrão.
+
+_Você provavelmente não precisará usar esse método pois estará usando `grunt.template.process` que usa este método internamente._
 
 ```js
 grunt.template.setDelimiters(name)
 ```
 
 ### grunt.template.addDelimiters
-Add a named set of [Lo-Dash template](http://lodash.com/docs/#template) delimiters. You probably won't need to use this method, because the built-in delimiters should be sufficient, but you could always add `{% %}` or `[% %]` style delimiters.
+Adiciona um conjunto de delimitadores [Lo-Dash template](http://lodash.com/docs/#template). Você provavelmente não precisará usar esse método, pois os delimitadores embutidos devem ser suficientes, entretanto você tem a opção de adicionar delimitadores no estilo `{% %}` ou `[% %]`
 
 ```js
 grunt.template.addDelimiters(name, opener, closer)
@@ -41,26 +41,26 @@ grunt.template.addDelimiters(name, opener, closer)
 ## Helpers
 
 ### grunt.template.date
-Format a date using the [dateformat library](https://github.com/felixge/node-dateformat).
+Formata uma data usando a [biblioteca dateformat](https://github.com/felixge/node-dateformat).
 
 ```js
 grunt.template.date(date, format)
 ```
 
-In this example, a specific date is formatted as month/day/year.
+Nesse exemplo, uma data especificada é formatada como mês/dia/ano.
 
 ```js
 grunt.template.date(847602000000, 'yyyy-mm-dd') // '1996-11-10'
 ```
 
 ### grunt.template.today
-Format today's date using the [dateformat library](https://github.com/felixge/node-dateformat).
+Formata a data de hoje usando a [biblioteca dateformat](https://github.com/felixge/node-dateformat).
 
 ```js
 grunt.template.today(format)
 ```
 
-In this example, today's date is formatted as a 4-digit year.
+Nesse exemplo, a data de hoje é formatada como um ano de 4 dígitos.
 
 ```js
 grunt.template.today('yyyy') // '2014'
