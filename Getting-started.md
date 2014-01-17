@@ -35,7 +35,7 @@ Assumindo que você já possui o Grunt CLI instalado e que o projeto já está c
 Isso é todo o necessário. As tarefas Grunt instaladas podem ser listadas executando `grunt --help`, mas é sempre uma ótima idéia começar com a documentação do projeto.
 
 ## Preparando um novo projeto Grunt
-Uma configuração inicial típica irá adicionar dois arquivo ao seu projeto: `package.json` e um `Gruntfile`.
+Uma configuração inicial típica irá adicionar dois arquivos ao seu projeto: `package.json` e um `Gruntfile`.
 
 **package.json**: Este arquivo é usado pelo [npm] para guardar metadados para projetos publicados como módulos npm. Você irá listar o Grunt e os plugins do Grunt que seu projeto precisa como [devDependencies] neste arquivo.
  
@@ -47,7 +47,7 @@ O arquivo `package.json` fica no diretório raiz do seu projeto, junto com o `Gr
 
 Existem algumas maneiras de criar um arquivo `package.json` para seu projeto:
 
-* A maioria dos modelos de [grunt-init] irá criar um `package.json` específico para o projeto.
+* A maioria dos modelos do [grunt-init] irá criar um `package.json` específico para o projeto.
 * O comando [npm init] irá criar um `package.json` simples.
 * Começar com o exemplo abaixo, expandindo conforme necessário, seguindo esta [especificação][json]
 
@@ -108,7 +108,7 @@ module.exports = function(grunt) {
   // Carrega o plugin que disponibiliza a tarefa "uglify"
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  // Tarefas padrão.
+  // Tarefa(s) padrão.
   grunt.registerTask('default', ['uglify']);
 
 };
@@ -121,7 +121,7 @@ Todo `Gruntfile` (e gruntplugin) usa este formato básico, e todo seu código Gr
 
 ```js
 module.exports = function(grunt) {
-  // coisas do Grunt aqui.
+  // Faça coisas do Grunt aqui.
 };
 ```
 
@@ -151,7 +151,7 @@ grunt.initConfig({
 ```
 
 ### Carregando plugins do Grunt e tarefas
-Muitas tarefas comumente usadas como [concatenation], [minification][grunt-contrib-uglify] e [linting] estão disponíveis como [plugins do Grunt](https://github.com/gruntjs). Desde que um plugin esteja especificado no `package.json` como uma dependência, e foi instalado via `npm install`, este pode ser habilitado no seu `Gruntfile` com um simples comando:
+Muitas tarefas comumente usadas como [concatenação], [minificação][grunt-contrib-uglify] e [linting] estão disponíveis como [plugins do Grunt](https://github.com/gruntjs). Desde que um plugin esteja especificado no `package.json` como uma dependência, e foi instalado via `npm install`, este pode ser habilitado no seu `Gruntfile` com um simples comando:
 
 ```js
 // Carrega o plugin que disponibiliza a tarefa "uglify".
@@ -161,10 +161,10 @@ grunt.loadNpmTasks('grunt-contrib-uglify');
 **Nota:** o comando `grunt --help` irá listar todas as tarefas disponíveis.
 
 ### Tarefas customizadas
-Você pode configurar o Grunt para executar uma ou mais tarefas por padrão definindo uma tarefa `default`. No exemplo a seguir, executando `grunt` na linha de comando sem especificar uma tarefa irá executar a tarefa `uglify`. Isso é o mesmo que explicitamente executar `grunt uglify` ou até `grunt default`. Qualquer quantidade de tarefas (com ou sem argumentos) podem ser especificadas em uma array.
+Você pode configurar o Grunt para executar uma ou mais tarefas por padrão definindo uma tarefa `default`. No exemplo a seguir, executando `grunt` na linha de comando sem especificar uma tarefa irá executar a tarefa `uglify`. Isso é o mesmo que explicitamente executar `grunt uglify` ou até `grunt default`. Qualquer quantidade de tarefas (com ou sem argumentos) podem ser especificadas em um array.
 
 ```js
-// Tarefas padrão.
+// Tarefa(s) padrão.
 grunt.registerTask('default', ['uglify']);
 ```
 
@@ -173,7 +173,7 @@ Se o seu projeto requer tarefas não disponibilizadas através de plugins do Gru
 ```js
 module.exports = function(grunt) {
 
-  // Uma tarefa bem simples.
+  // Uma tarefa padrão bem simples.
   grunt.registerTask('default', 'Log some stuff.', function() {
     grunt.log.write('Logging some stuff...').ok();
   });
