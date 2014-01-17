@@ -3,32 +3,32 @@ Registra, executa e carrega tarefas externas.
 Veja o [task lib source](https://github.com/gruntjs/grunt/blob/master/lib/grunt/task.js) e [task util lib source](https://github.com/gruntjs/grunt/blob/master/lib/util/task.js) para mais informações.
 
 ## A API de tarefas
-Enquanto uma tarefa está sendo executada, o Grunt exibe diversas propriedades úteis especificas para tarefas e métodos dentro da função da tarefa via objeto `this`. Veja o guia [[Por dentro de todas as tarefas]](Inside-Tasks.md) para uma lista destas propriedades e métodos.
+Enquanto uma tarefa está sendo executada, o Grunt exibe diversas propriedades úteis específicas para tarefas e métodos dentro da função da tarefa através do objeto `this`. Veja o guia [[Por dentro de todas as tarefas]](Inside-Tasks.md) para uma lista destas propriedades e métodos.
  
-Muitas propriedades úteis e métodos estão disponíveis dentro das tarefas via objeto `this`.
+Muitas propriedades úteis e métodos estão disponíveis dentro das tarefas através do objeto `this`.
 
 Note que qualquer método marcado com um ☃ (unicode boneco de neve) também está disponível no objeto `grunt`. Só para você saber. Veja [página principal da API](grunt) para mais informações de uso.
 
 ## Criando tarefas
 
 ### grunt.task.registerTask ☃
-Registra um "apelido de tarefa" ou uma função de tarefa. Este método suporta as duas formas de escrever a seguir:
+Registra um "alias de tarefa" ou uma função de tarefa. Este método suporta as duas formas de escrever a seguir:
 
-**Apelido de tarefa**
+**Alias de tarefa**
 
-Se uma lista de tarefas é especificada, a nova tarefa será um apelido para uma ou mais tarefas. Sempre que este "apelido de tarefa" é executado, todas as tarefas especificadas em `taskList` serão executadas, na ordem especificada. O argumento `taskList` deve ser um array de tarefas.
+Se uma lista de tarefas é especificada, a nova tarefa será um alias para uma ou mais tarefas. Sempre que este "alias de tarefa" é executado, todas as tarefas especificadas em `taskList` serão executadas, na ordem especificada. O argumento `taskList` deve ser um array de tarefas.
 
 ```javascript
 grunt.task.registerTask(taskName, taskList)
 ```
 
-Este exemplo de apelido de tarefa define uma tarefa "default", e através desta as tarefas "jshint", "qunit", "concat" e "uglify" serão executadas automaticamente se o Grunt for executado sem qualquer tarefa especificada:
+Este exemplo de alias de tarefa define uma tarefa "default", e através desta as tarefas "jshint", "qunit", "concat" e "uglify" serão executadas automaticamente se o Grunt for executado sem especificar qualquer tarefa:
 
 ```javascript
 task.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
 ```
 
-Argumentos para tarefas podem ser especificados. Neste exemplo, a apelido "dist" executa tanto a tarefa "concat" quanto a "uglify", cada uma com o argumento "dist":
+Argumentos para tarefas podem ser especificados. Neste exemplo, a alias "dist" executa tanto a tarefa "concat" quanto a "uglify", cada uma com o argumento "dist":
 
 ```javascript
 task.registerTask('dist', ['concat:dist', 'uglify:dist']);
@@ -38,7 +38,7 @@ task.registerTask('dist', ['concat:dist', 'uglify:dist']);
 
 Se uma `description` e `taskFunction` são passados, a função especificada será executada sempre que a tarefa for executada. Além disso, a descrição especificada será apresentada quando `grunt --help` for executado. Propriedades específicas de tarefas e métodos estão disponíveis dentro da função de tarefa do objecto `this`. A função de tarefa pode retornar `false` para indicar que a tarefa falhou.
 
-Perceba que o método `grunt.task.registerMultiTask`, explicado abaixo, pode ser usado para definir um tipo especial de tarefa conhecido como "multi tarefa".
+Perceba que o método `grunt.task.registerMultiTask`, explicado abaixo, pode ser usado para definir um tipo especial de tarefa conhecido como "multitarefa".
 
 ```javascript
 grunt.task.registerTask(taskName, description, taskFunction)
@@ -56,20 +56,20 @@ grunt.task.registerTask('foo', 'A sample task that logs stuff.', function(arg1, 
 });
 ```
 
-Veja a documentação de [Criando tarefas](Creating-tasks.md) para mais exemplos de tarefas e apelidos de tarefas.
+Veja a documentação [Criando tarefas](Creating-tasks.md) para mais exemplos de tarefas e aliass de tarefas.
 
 _Este método também está disponível como [grunt.registerTask](grunt)_
 
 ### grunt.task.registerMultiTask ☃
-Registra uma "multi tarefa". A multi tarefa é uma tarefa que implicitamente itera por todos suas subpropriedades nomeadas (também conhecido como alvos) se nenhum alvo for especificado. Além das propriedades e métodos padrão, propriedades especificas para multi tarefas estão disponíveis dentro da função da tarefa como propriedades do objeto `this`.
+Registra uma "multitarefa". A multitarefa é uma tarefa que implicitamente itera por todos suas subpropriedades nomeadas (também conhecido como alvos) se nenhum alvo for especificado. Além das propriedades e métodos padrão, propriedades especificas para multitarefas estão disponíveis dentro da função da tarefa como propriedades do objeto `this`.
 
-Muitas das tarefas contrib, incluindo as tarefas [jshint](https://github.com/gruntjs/grunt-contrib-jshint), [concat](https://github.com/gruntjs/grunt-contrib-concat) e [uglify](https://github.com/gruntjs/grunt-contrib-uglify) são multi tarefas.
+Muitas das tarefas contrib, incluindo as tarefas [jshint](https://github.com/gruntjs/grunt-contrib-jshint), [concat](https://github.com/gruntjs/grunt-contrib-concat) e [uglify](https://github.com/gruntjs/grunt-contrib-uglify) são multitarefas.
 
 ```javascript
 grunt.task.registerMultiTask(taskName, description, taskFunction)
 ```
 
-Dada a configuração especificada, este exemplo de multi tarefa logaria `foo: 1,2,3` se o Grunt fosse executado via `grunt log:foo`, ou logaria `bar: hello world` se o Grunt fosse executado via `grunt log:bar`. Contudo, se o Grunt for executado como `grunt log`, seria logado `foo: 1,2,3`, depois `bar: hello world` e depois `baz: false`.
+Dada a configuração especificada, este exemplo de multitarefa registraria `foo: 1,2,3` se o Grunt fosse executado via `grunt log:foo`, ou registraria `bar: hello world` se o Grunt fosse executado via `grunt log:bar`. Contudo, se o Grunt for executado como `grunt log`, seria registrado `foo: 1,2,3`, depois `bar: hello world` e depois `baz: false`.
 
 ```javascript
 grunt.initConfig({
@@ -85,15 +85,13 @@ grunt.task.registerMultiTask('log', 'Log stuff.', function() {
 });
 ```
 
-See the [creating tasks](Creating-tasks) documentation for more examples of multi tasks.
-Veja a documentação [Criando tarefas](Creating-tasks.md) para mais exemplos de multi tarefas.
+Veja a documentação [Criando tarefas](Creating-tasks.md) para mais exemplos de multitarefas.
 
 _Este método também está disponível como [grunt.registerMultiTask](grunt)._
 
 ### grunt.task.renameTask ☃
-Renomeia uma tarefa. Isto pode ser útil se você quer sobrescrever o comportamento padrão de uma tarefa, enquanto retem o antigo nome.
+Renomeia uma tarefa. Isto pode ser útil se você quer sobrescrever o comportamento padrão de uma tarefa, enquanto retém o antigo nome.
 
-_Note that if a task has been renamed, the [this.name](inside-tasks#this.name) and [this.nameArgs](inside-tasks#this.nameArgs) properties will change accordingly._
 _Note que se uma tarefa for renomeada, as propriedades [this.name](inside-tasks#this.name) e [this.nameArgs](inside-tasks#this.nameArgs) serão alteradas consequentemente._
 
 ```javascript
@@ -142,7 +140,7 @@ grunt.task.clearQueue()
 ```
 
 ### grunt.task.normalizeMultiTaskFiles
-Normaliza um objeto de configuração de uma tarefa alvo para um array de mapeamento de arquivo fonte-destino. Este método é utilizado internamente pela propriedade [this.files / grunt.task.current.files](grunt.task#wiki-this-files) do sistema multi tarefas.
+Normaliza um objeto de configuração de uma tarefa alvo para um array de mapeamento de arquivo fonte-destino. Este método é utilizado internamente pela propriedade [this.files / grunt.task.current.files](grunt.task#wiki-this-files) do sistema multitarefas.
 
 ```javascript
 grunt.task.normalizeMultiTaskFiles(data [, targetname])
