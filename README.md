@@ -67,3 +67,4 @@ Tradução da documentação do [GruntJS](http://gruntjs.com/)
 - Procure traduzir uma *issue* de cada vez
 - Utilize notas de rodapé para termos técnicos com o seu respectivo link externo para mais informações.
 - Mensagens de *commits* devem ser em **pt-BR**.
+- Quando algum link externo em outro idioma for linkado em algum documento, traduzir o título da página e colocar em parênteses (em `nome da língua`). Ex.: [Uma nova palavra: "transpilation"](http://forum.world.st/Ah-a-new-word-transpilation-td4676435.html) (em inglês).
