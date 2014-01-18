@@ -1,38 +1,38 @@
-Tasks are grunt's bread and butter. The stuff you do most often, like `jshint` or `nodeunit`. Every time Grunt is run, you specify one or more tasks to run, which tells Grunt what you'd like it to do.
+As tarefas são o pão com manteiga do Grunt. Aas coisas que você mais faz, como `jshint` ou `nodeunit`. Toda vez que o Grunt é executado, você especifica uma ou mais tarefas a serem executadas, que diz ao Grunt o que você gostaria de fazer.
 
-If you don't specify a task, but a task named "default" has been defined, that task will run (unsurprisingly) by default.
+Se você não especificar uma tarefa, mas a tarefa nomeada "default" foi definida, esta tarefa vai ser executada (obviamente) por padrão.
 
-## Alias Tasks
-If a task list is specified, the new task will be an alias for one or more other tasks. Whenever this "alias task" is run, every specified tasks in `taskList` will be run, in the order specified. The `taskList` argument must be an array of tasks.
+## Atalhos de Tarefas
+Se uma lista de tarefas foi especificada, a nova tarefa vai ser um atalho para uma ou mais tarefas. Sempre que este "atalho de tarefa" é executado, todas as tarefas especificadas na `taskList` vão ser executada, em suas respectivas ordens. O argumento `taskList` deve ser um array de tarefas.
 
 ```javascript
 grunt.registerTask(taskName, [description, ] taskList)
 ```
 
-This example alias task defines a "default" task whereby the "jshint", "qunit", "concat" and "uglify" tasks are run automatically if Grunt is executed without specifying any tasks:
+Este exemplo de atalho de uma tarefa define uma tarefa "default" por onde as tarefas "jshint", "qunit", "concat" e "uglify" serão sempre executadas se o Grunt é executado sem nenhum tarefa especificada.
 
 ```javascript
 grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
 ```
 
-Task arguments can be specified as well. In this example, the alias "dist" runs both the "concat" and "uglify" tasks, each with a "dist" argument:
+Os argumentos das tarefas também podem ser especificadas. Neste exemplo, o atalho "dist" executa tanto a tarefa "concat" como a "uglify", cada um com o argumento "dist".
 
 ```javascript
 grunt.registerTask('dist', ['concat:dist', 'uglify:dist']);
 ```
 
-## Multi Tasks
-When a multi task is run, Grunt looks for a property of the same name in the Grunt configuration. Multi-tasks can have multiple configurations, defined using arbitrarily named "targets."
+## Multitarefas
+Quando uma multitarefa é executada, o Grunt procura por uma propriedade de mesmo nome em sua configuração. As multitarefas podem ter múltiplas configurações, definidas arbitrariamente usando "targets".
 
-Specifying both a task and target like `grunt concat:foo` or `grunt concat:bar` will process just the specified target's configuration, while running `grunt concat` will iterate over _all_ targets, processing each in turn.  Note that if a task has been renamed with [grunt.task.renameTask](grunt.task#grunt.task.renameTask), Grunt will look for a property with the _new_ task name in the config object.
+Espoecificando ambas tarefas e targets como `grunt concat:foo` ou `grunt concat:bar` vai processar somente as configurações dos targets especificados. Observe que se uma tarefa for renomeada com [grunt.task.renameTask](grunt.task.md#grunt.task.renameTask), o Grunt vai procurar por uma propriedade com o novo nome da tarefa no objeto da configuração.
 
-Most of the contrib tasks, including the [grunt-contrib-jshint plugin jshint task](https://github.com/gruntjs/grunt-contrib-jshint), [concat task](https://github.com/gruntjs/grunt-contrib-concat) and [grunt-contrib-concat plugin concat task](https://github.com/gruntjs/grunt-contrib-concat) are multi tasks.
+A maioria das tarefas oficiais (contrib), incluindo a [tarefa do plugin jshint grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint), [concat task](https://github.com/gruntjs/grunt-contrib-concat) e a [tarefa do plugin concat grunt-contrib-concat](https://github.com/gruntjs/grunt-contrib-concat) são multitarefas.
 
 ```javascript
 grunt.registerMultiTask(taskName, [description, ] taskFunction)
 ```
 
-Given the specified configuration, this example multi task would log `foo: 1,2,3` if Grunt was run via `grunt log:foo`, or it would log `bar: hello world` if Grunt was run via `grunt log:bar`. If Grunt was run as `grunt log` however, it would log `foo: 1,2,3` then `bar: hello world` then `baz: false`.
+Dada a configuração especificada, este exemple de uma multitarefa deve registrar `foo: 1,2,3` se o Grunt for executado através de `grunt log:foo`, ou deve registrar `bar: hello world` se o Grunt for executado através de `grunt log:bar`. Porém ainda se o Grunt for executado através de `grunt log` , a multitarefa deve registrar `foo: 1,2,3` depois `bar: hello world` e depois `baz: false`.
 
 ```javascript
 grunt.initConfig({
@@ -49,168 +49,168 @@ grunt.registerMultiTask('log', 'Log stuff.', function() {
 ```
 
 
-## "Basic" Tasks
-When a basic task is run, Grunt doesn't look at the configuration or environment—it just runs the specified task function, passing any specified colon-separated arguments in as function arguments.
+## Tarefas "básicas"
+Quando uma tarefa básica é executada, o Grunt não olha a configuração ou ambientação, só executa a função da tarefa especificada, passando qualquer argumento seperado por dois pontos como argumentos de função.
 
 ```javascript
 grunt.registerTask(taskName, [description, ] taskFunction)
 ```
 
-This example task logs `foo, testing 123` if Grunt is run via `grunt foo:testing:123`. If the task is run without arguments as `grunt foo` the task logs `foo, no args`.
+Este exemplo, a tarefa registra `foo, testando 123` se o Grunt foi executado através de `grunt foo:testando:123`. Se a tarefa é executada sem argumentos, como `grunt foo`, a tarefa registra `foo, sem args`.
 
 ```javascript
-grunt.registerTask('foo', 'A sample task that logs stuff.', function(arg1, arg2) {
+grunt.registerTask('foo', 'Uma simples tarefa que registra algumas coisas.', function(arg1, arg2) {
   if (arguments.length === 0) {
-    grunt.log.writeln(this.name + ", no args");
+    grunt.log.writeln(this.name + ", sem args");
   } else {
     grunt.log.writeln(this.name + ", " + arg1 + " " + arg2);
   }
 });
 ```
 
-## Custom tasks
-You can go crazy with tasks. If your tasks don't follow the "multi task" structure, use a custom task.
+## Tarefas customizadas
+Você pode fazer coisas louquíssimas com as tarefas. Se você não quiser seguir a estrutura "multitarefas", use uma tarefa customizada.
 
 ```javascript
-grunt.registerTask('default', 'My "default" task description.', function() {
-  grunt.log.writeln('Currently running the "default" task.');
+grunt.registerTask('default', 'Minha descrição para a tarefa "default".', function() {
+  grunt.log.writeln('Atualmente executando a tarefa "default".');
 });
 ```
 
-Inside a task, you can run other tasks.
+Dentro de uma tarefa, você pode executar outras tarefas.
 
 ```javascript
-grunt.registerTask('foo', 'My "foo" task.', function() {
-  // Enqueue "bar" and "baz" tasks, to run after "foo" finishes, in-order.
+grunt.registerTask('foo', 'Minha tarefa "foo".', function() {
+  // Enfileirando as tarefas "bar" e "baz", para executar a tarefa "foo" quando terminar, em ordem.
   grunt.task.run('bar', 'baz');
-  // Or:
+  // Ou:
   grunt.task.run(['bar', 'baz']);
 });
 ```
 
-Tasks can be asynchronous.
+Tarefas podem ser assíncronas.
 
 ```javascript
-grunt.registerTask('asyncfoo', 'My "asyncfoo" task.', function() {
-  // Force task into async mode and grab a handle to the "done" function.
+grunt.registerTask('asyncfoo', 'Minha tarefa "asyncfoo".', function() {
+  // Força a tarefa para o modo async e associa à função "done"
   var done = this.async();
-  // Run some sync stuff.
-  grunt.log.writeln('Processing task...');
-  // And some async stuff.
+  // Executa algum sync
+  grunt.log.writeln('Processando a tarefa...');
+  // E algum async
   setTimeout(function() {
-    grunt.log.writeln('All done!');
+    grunt.log.writeln('Tudo certo!');
     done();
   }, 1000);
 });
 ```
-
-Tasks can access their own name and arguments.
+Tarefas podem acessar os próprios nomes e argumentos.
 
 ```javascript
-grunt.registerTask('foo', 'My "foo" task.', function(a, b) {
+grunt.registerTask('foo', 'Minha tarefa "foo".', function(a, b) {
   grunt.log.writeln(this.name, a, b);
 });
 
-// Usage:
+// Uso:
 // grunt foo foo:bar
-//   logs: "foo", undefined, undefined
-//   logs: "foo", "bar", undefined
+//   registra: "foo", undefined, undefined
+//   registra: "foo", "bar", undefined
 // grunt foo:bar:baz
-//   logs: "foo", "bar", "baz"
+//   registra: "foo", "bar", "baz"
 ```
 
-Tasks can fail if any errors were logged.
+As tarefas podem falhar se qualquer erro por registrada.
 
 ```javascript
-grunt.registerTask('foo', 'My "foo" task.', function() {
-  if (failureOfSomeKind) {
-    grunt.log.error('This is an error message.');
+grunt.registerTask('foo', 'Minha tarefa "foo".', function() {
+  if (algumErroQualquer) {
+    grunt.log.error('Esta é uma mensagem de erro.');
   }
 
-  // Fail by returning false if this task had errors
+  // Falha retornando false, se a tarefa obteve erros.
   if (ifErrors) { return false; }
 
-  grunt.log.writeln('This is the success message');
+  grunt.log.writeln('Esta é uma mensagem de sucesso.');
 });
 ```
 
-When tasks fail, all subsequent tasks will be aborted unless `--force` was specified.
+Quando tarefas falham, todas as tarefas subsequentes são interrompidas se a opção `--force` foi especificada.
 
 ```javascript
 grunt.registerTask('foo', 'My "foo" task.', function() {
-  // Fail synchronously.
+  // Falha de forma síncrona.
   return false;
 });
 
 grunt.registerTask('bar', 'My "bar" task.', function() {
   var done = this.async();
   setTimeout(function() {
-    // Fail asynchronously.
+    // Falha de forma assíncrona.
     done(false);
   }, 1000);
 });
 ```
 
-Tasks can be dependent on the successful execution of other tasks. Note that `grunt.task.requires` won't actually RUN the other task(s). It'll just check to see that it has run and not failed.
+Tarefas podem ser dependentes do execução sem falhas de outras tarefas. Observe que `grunt.task.requires` atualmente não irá executar outra(s) tarefa(s). Isto somente checa se a tarefa foi executada e não falhou.
 
 ```javascript
-grunt.registerTask('foo', 'My "foo" task.', function() {
+grunt.registerTask('foo', 'Minha tarefa "foo".', function() {
   return false;
 });
 
-grunt.registerTask('bar', 'My "bar" task.', function() {
-  // Fail task if "foo" task failed or never ran.
+grunt.registerTask('bar', 'Minha tarefa "foo".', function() {
+  // Falha a tarefa se a tarefa "foo" falhou ou nunca funcionou.
   grunt.task.requires('foo');
-  // This code executes if the "foo" task ran successfully.
+  // Este código executa se a tarefa "foo" foi executada com sucesso.
   grunt.log.writeln('Hello, world.');
 });
 
-// Usage:
+// Uso:
 // grunt foo bar
-//   doesn't log, because foo failed.
+//   não registra nada, pois "foo" falhou.
 // grunt bar
-//   doesn't log, because foo never ran.
+//   não registra nada, pois a tarefa "foo" nunca foi executada.
 ```
 
-Tasks can fail if required configuration properties don't exist.
+Tarefas podem falhas se as configuração de propriedades requeridas não existam.
 
 ```javascript
-grunt.registerTask('foo', 'My "foo" task.', function() {
-  // Fail task if "meta.name" config prop is missing.
+grunt.registerTask('foo', 'Minha tarefa "foo".', function() {
+  // Falha se a propriedade de configuração "meta.name" estiver faltando.
   grunt.config.requires('meta.name');
-  // Also fails if "meta.name" config prop is missing.
+  // Também falha se a propriedade de configuração "meta.name" estiver faltando.
   grunt.config.requires(['meta', 'name']);
-  // Log... conditionally.
+  // Registra... Condicionalmente.
   grunt.log.writeln('This will only log if meta.name is defined in the config.');
 });
 ```
 
-Tasks can access configuration properties.
+Tarefas podem acessar propriedades de configurações.
 
 ```javascript
-grunt.registerTask('foo', 'My "foo" task.', function() {
-  // Log the property value. Returns null if the property is undefined.
-  grunt.log.writeln('The meta.name property is: ' + grunt.config('meta.name'));
-  // Also logs the property value. Returns null if the property is undefined.
-  grunt.log.writeln('The meta.name property is: ' + grunt.config(['meta', 'name']));
+grunt.registerTask('foo', 'Minha tarefa "foo".', function() {
+  // Registra o valor da propriedade. Retorna null se a propriedade é indefinida.
+  grunt.log.writeln('A propriedade meta.name é: ' + grunt.config('meta.name'));
+  // Também registra o valor da propriedade. Retorna null se a propriedade é indefinida.
+  grunt.log.writeln('A propriedade meta.name é: ' + grunt.config(['meta', 'name']));
 });
 ```
 
-Take a look at the [contrib tasks](https://github.com/gruntjs/) for more examples.
+Dê uma olhada em [tarefas contrib](https://github.com/gruntjs/) para mais exemplos.
 
-## CLI options / environment
+## Opções do CLI / ambiente
 _TODO_
-(pull from FAQ, recommend process.env)
+(pull do FAQ, recomendado: process.env)
 
-## Why doesn't my asynchronous task complete?
-Chances are this is happening because you have forgotten to call the [this.async](grunt.task#wiki-this-async) method to tell Grunt that your task is asynchronous. For simplicity's sake, Grunt uses a synchronous coding style, which can be switched to asynchronous by calling `this.async()` within the task body.
+## Por que minhas tarefas assíncronas não concluem?
 
-Note that passing `false` to the `done()` function tells Grunt that the task has failed.
+Há chances de isso estar acontecendo porque você esqueceu de chamar o método [this.async](grunt.task#wiki-this-async) para dizer ao Grunt que a sua tarefa é assíncrona. Por causa da simplicidade, o Grunt usa um estilo de código síncrono, que pode ser alternado para assíncrono chamando `this.async()` dentro da tarefa.
 
-For example:
+Observe que passando `false` para a função `done()` diz ao Grunt que a tarefa falhou.
+
+Por exemplo:
 
 ```javascript
-grunt.registerTask('asyncme', 'My asynchronous task.', function() {
+grunt.registerTask('asyncme', 'Minha tarefa assíncrona.', function() {
   var done = this.async();
   doSomethingAsync(done);
 });
