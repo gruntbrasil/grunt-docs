@@ -1,15 +1,15 @@
-As tarefas são o pão com manteiga do Grunt. Aas coisas que você mais faz, como `jshint` ou `nodeunit`. Toda vez que o Grunt é executado, você especifica uma ou mais tarefas a serem executadas, que diz ao Grunt o que você gostaria de fazer.
+As tarefas são o pão com manteiga do Grunt. As coisas que você mais faz, como `jshint` ou `nodeunit`. Toda vez que o Grunt é executado, você especifica uma ou mais tarefas a serem executadas, que diz ao Grunt o que você gostaria de fazer.
 
 Se você não especificar uma tarefa, mas a tarefa nomeada "default" foi definida, esta tarefa vai ser executada (obviamente) por padrão.
 
 ## Atalhos de Tarefas
-Se uma lista de tarefas foi especificada, a nova tarefa vai ser um atalho para uma ou mais tarefas. Sempre que este "atalho de tarefa" é executado, todas as tarefas especificadas na `taskList` vão ser executada, em suas respectivas ordens. O argumento `taskList` deve ser um array de tarefas.
+Se uma lista de tarefas foi especificada, a nova tarefa vai ser um atalho para uma ou mais tarefas. Sempre que este "atalho de tarefa" é executado, todas as tarefas especificadas na `taskList` vão ser executadas, em suas respectivas ordens. O argumento `taskList` deve ser um array de tarefas.
 
 ```javascript
 grunt.registerTask(taskName, [description, ] taskList)
 ```
 
-Este exemplo de atalho de uma tarefa define uma tarefa "default" por onde as tarefas "jshint", "qunit", "concat" e "uglify" serão sempre executadas se o Grunt é executado sem nenhum tarefa especificada.
+Este exemplo de atalho de uma tarefa define uma tarefa "default" por onde as tarefas "jshint", "qunit", "concat" e "uglify" serão sempre executadas se o Grunt é executado sem nenhuma tarefa especificada.
 
 ```javascript
 grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
@@ -24,7 +24,7 @@ grunt.registerTask('dist', ['concat:dist', 'uglify:dist']);
 ## Multitarefas
 Quando uma multitarefa é executada, o Grunt procura por uma propriedade de mesmo nome em sua configuração. As multitarefas podem ter múltiplas configurações, definidas arbitrariamente usando "targets".
 
-Espoecificando ambas tarefas e targets como `grunt concat:foo` ou `grunt concat:bar` vai processar somente as configurações dos targets especificados. Observe que se uma tarefa for renomeada com [grunt.task.renameTask](grunt.task.md#grunt.task.renameTask), o Grunt vai procurar por uma propriedade com o novo nome da tarefa no objeto da configuração.
+Especificando ambas tarefas e "targets" como `grunt concat:foo` ou `grunt concat:bar` vai processar somente as configurações dos targets especificados. Observe que se uma tarefa for renomeada com [grunt.task.renameTask](grunt.task.md#grunt.task.renameTask), o Grunt vai procurar por uma propriedade com o novo nome da tarefa no objeto da configuração.
 
 A maioria das tarefas oficiais (contrib), incluindo a [tarefa do plugin jshint grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint), [concat task](https://github.com/gruntjs/grunt-contrib-concat) e a [tarefa do plugin concat grunt-contrib-concat](https://github.com/gruntjs/grunt-contrib-concat) são multitarefas.
 
@@ -32,7 +32,7 @@ A maioria das tarefas oficiais (contrib), incluindo a [tarefa do plugin jshint g
 grunt.registerMultiTask(taskName, [description, ] taskFunction)
 ```
 
-Dada a configuração especificada, este exemple de uma multitarefa deve registrar `foo: 1,2,3` se o Grunt for executado através de `grunt log:foo`, ou deve registrar `bar: hello world` se o Grunt for executado através de `grunt log:bar`. Porém ainda se o Grunt for executado através de `grunt log` , a multitarefa deve registrar `foo: 1,2,3` depois `bar: hello world` e depois `baz: false`.
+Dada a configuração especificada, este exemplo de uma multitarefa deve registrar `foo: 1,2,3` se o Grunt for executado através de `grunt log:foo`, ou deve registrar `bar: hello world` se o Grunt for executado através de `grunt log:bar`. Porém ainda se o Grunt for executado através de `grunt log` , a multitarefa deve registrar `foo: 1,2,3` depois `bar: hello world` e depois `baz: false`.
 
 ```javascript
 grunt.initConfig({
@@ -50,13 +50,13 @@ grunt.registerMultiTask('log', 'Log stuff.', function() {
 
 
 ## Tarefas "básicas"
-Quando uma tarefa básica é executada, o Grunt não olha a configuração ou ambientação, só executa a função da tarefa especificada, passando qualquer argumento seperado por dois pontos como argumentos de função.
+Quando uma tarefa básica é executada, o Grunt não olha a configuração ou ambiente, ele só executa a função da tarefa especificada, passando qualquer argumento seperado por dois pontos como argumentos de função.
 
 ```javascript
 grunt.registerTask(taskName, [description, ] taskFunction)
 ```
 
-Este exemplo, a tarefa registra `foo, testando 123` se o Grunt foi executado através de `grunt foo:testando:123`. Se a tarefa é executada sem argumentos, como `grunt foo`, a tarefa registra `foo, sem args`.
+Neste exemplo, a tarefa registra `foo, testando 123` se o Grunt foi executado através de `grunt foo:testando:123`. Se a tarefa é executada sem argumentos, como `grunt foo`, a tarefa registra `foo, sem args`.
 
 ```javascript
 grunt.registerTask('foo', 'Uma simples tarefa que registra algumas coisas.', function(arg1, arg2) {
@@ -69,7 +69,7 @@ grunt.registerTask('foo', 'Uma simples tarefa que registra algumas coisas.', fun
 ```
 
 ## Tarefas customizadas
-Você pode fazer coisas louquíssimas com as tarefas. Se você não quiser seguir a estrutura "multitarefas", use uma tarefa customizada.
+Você pode fazer loucuras com as tarefas. Se você não quiser seguir a estrutura "multitarefas", use uma tarefa customizada.
 
 ```javascript
 grunt.registerTask('default', 'Minha descrição para a tarefa "default".', function() {
@@ -118,7 +118,7 @@ grunt.registerTask('foo', 'Minha tarefa "foo".', function(a, b) {
 //   registra: "foo", "bar", "baz"
 ```
 
-As tarefas podem falhar se qualquer erro por registrada.
+As tarefas podem falhar se quaisquer erros foram registrados
 
 ```javascript
 grunt.registerTask('foo', 'Minha tarefa "foo".', function() {
@@ -150,7 +150,7 @@ grunt.registerTask('bar', 'My "bar" task.', function() {
 });
 ```
 
-Tarefas podem ser dependentes do execução sem falhas de outras tarefas. Observe que `grunt.task.requires` atualmente não irá executar outra(s) tarefa(s). Isto somente checa se a tarefa foi executada e não falhou.
+As tarefas podem ser dependentes da execução bem sucedida de outras tarefas. Note que o `grunt.task.requires` não vai executar outra(s) tarefa(s). Só vai verificar se a tarefa foi executada e não falhou.
 
 ```javascript
 grunt.registerTask('foo', 'Minha tarefa "foo".', function() {
@@ -158,7 +158,7 @@ grunt.registerTask('foo', 'Minha tarefa "foo".', function() {
 });
 
 grunt.registerTask('bar', 'Minha tarefa "foo".', function() {
-  // Falha a tarefa se a tarefa "foo" falhou ou nunca funcionou.
+  // Falha a tarefa se a tarefa "foo" falhou ou nunca foi executada.
   grunt.task.requires('foo');
   // Este código executa se a tarefa "foo" foi executada com sucesso.
   grunt.log.writeln('Hello, world.');
@@ -171,7 +171,7 @@ grunt.registerTask('bar', 'Minha tarefa "foo".', function() {
 //   não registra nada, pois a tarefa "foo" nunca foi executada.
 ```
 
-Tarefas podem falhas se as configuração de propriedades requeridas não existam.
+Tarefas podem falhar se a configuração de propriedades requeridas não existam.
 
 ```javascript
 grunt.registerTask('foo', 'Minha tarefa "foo".', function() {
@@ -180,7 +180,7 @@ grunt.registerTask('foo', 'Minha tarefa "foo".', function() {
   // Também falha se a propriedade de configuração "meta.name" estiver faltando.
   grunt.config.requires(['meta', 'name']);
   // Registra... Condicionalmente.
-  grunt.log.writeln('This will only log if meta.name is defined in the config.');
+  grunt.log.writeln('Só haverá o registro, se "meta.name" estiver definida na configuração.');
 });
 ```
 
