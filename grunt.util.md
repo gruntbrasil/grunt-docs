@@ -8,25 +8,25 @@ grunt.util.kindOf(value)
 ```
 
 ### grunt.util.error
-Retorna uma nova instância Error (que pode ser levantada) com a mensagem adequada. Se um objeto Error for especificado em vez de uma `message`, este objeto será devolvido.
-Além disso, se um objeto Error for especificado para `origError` e o Grunt tiver sido executado com a opção `--debug 9`, a pilha original de erros será despejada.
+Retorna uma nova instância Error (que pode ser lançada) com a mensagem adequada. Se um objeto Error for especificado em vez de uma `message`, este objeto será retornado.
+Além disso, se um objeto Error for especificado para `origError` e o Grunt tiver sido executado com a opção `--debug 9`, o stack original Error vai ser retornado.
 
 ```js
 grunt.util.error(message [, origError])
 ```
 
 ### grunt.util.linefeed
-O caracter para avanço de linha, normalizado para o sistema operacional atual. (`\r\n` on Windows, `\n` otherwise)
+O caractere para avanço de linha, normalizado para o padrão atual sistema operacional. (`\r\n` no Windows, `\n` em outros sistemas)
 
 ### grunt.util.normalizelf
-Fornecido uma string, retorna uma nova string com todos os avanços de linhas normalizados para o sistema operacional atual. (`\r\n` on Windows, `\n` otherwise)
+Fornecido uma string, retorna uma nova string com todos os avanços de linhas normalizados para o padrão atual sistema operacional. (`\r\n` no Windows, `\n` em outros sistemas)
 
 ```js
 grunt.util.normalizelf(string)
 ```
 
 ### grunt.util.recurse
-Recursividade sobre os objetos e arrays aninhados, executando `callbackFunction` para cada valor diferente de objeto. Se `continueFunction` retornar `false`, o objeto ou valor fornecido será ignorado.
+Percorre recursivamente objetos e arrays, executando `callbackFunction` para cada valor que não for um objeto. Se `continueFunction` retornar `false`, o objeto ou valor fornecido será ignorado.
 
 ```js
 grunt.util.recurse(object, callbackFunction, continueFunction)
@@ -40,14 +40,14 @@ grunt.util.repeat(n, str)
 ```
 
 ### grunt.util.pluralize
-Recebido `str` de `"a/b"`, Se `n` for `1`, retorna `"a"` no lugar de `"b"`. Você pode especificar um separador customizado se '/' não servir para você.
+Recebido `str` de `"a/b"`, Se `n` for `1`, retorna `"a"` no lugar de `"b"`. Você pode especificar um separador customizado se '/' não funcionar para você.
 
 ```js
 grunt.util.pluralize(n, str, separator)
 ```
 
 ### grunt.util.spawn
-Gera um processo filho, mantendo o controle dos seus stdout, stderr e código de saída. O método retorna uma referência ao filho gerado. Quando o filho existir, a função de conclusão é chamada.
+Gera um processo filho, mantendo o controle dos seus stdout, stderr e códigos de saída. O método retorna uma referência ao filho gerado. Quando o filho existir, a função `doneFunction` é chamada.
 
 ```js
 grunt.util.spawn(options, doneFunction)
@@ -60,11 +60,11 @@ var options = {
   // O comando a ser executado. Ele deve ser um caminho do sistema.
   cmd: commandToExecute,
   // Se especificado, o mesmo grunt bin que está em execução será gerado 
-  // como um comando filho, no lugar da opção "cmd". O padrão é false
+  // como um comando filho, no lugar da opção "cmd". O padrão é false.
   grunt: boolean,
   // Um array de argumentos para passar ao comando.
   args: arrayOfArguments,
-  // Opções adicionais para o método Node.js child_process gerado.
+  // Opções adicionais para o processo de criação do child_process Node.js.
   opts: nodeSpawnOptions,
   // Se o valor for definido e um erro ocorrer, ele vai ser utilizado como valor 
   // e null será passado como o valor do erro.
@@ -72,7 +72,7 @@ var options = {
 };
 ```
 
-A função de conclusão possui os possíveis argumentos:
+A função `doneFunction` aceita os possíveis argumentos:
 
 ```js
 function doneFunction(error, result, code) {
@@ -93,7 +93,7 @@ function doneFunction(error, result, code) {
 ```
 
 ### grunt.util.toArray
-Dado um array ou objeto tipo array, retorna um array. Ótimo para converter objetos `arguments` em arrays.
+Dado um array ou objeto array-like, retorna um array. Ótimo para converter objetos `arguments` para arrays.
 
 ```js
 grunt.util.toArray(arrayLikeObject)
