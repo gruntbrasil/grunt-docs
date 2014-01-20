@@ -1,15 +1,15 @@
 ## Como eu instalo o grunt?
-Para instruções genéricas de instalação, por favor leia o guia [[Getting Started]]. Se após a leitura desse guia, você precisar de informações mais específicas, leia o guia abrangente [[Installing grunt]]. 
+Para instruções gerais de instalação, por favor leia o guia [[Getting Started]]. Se após a leitura desse guia, você precisar de informações mais específicas, leia o guia abrangente [[Installing grunt]]. 
 
 ## Quando poderei usar a funcionalidade em desenvolvimento 'X'?
 Instalação tanto de versões publicadas e não publicadas do Grunt é coberta no guia [[Installing grunt]].
 
 ## O Grunt funciona no Windows?
-O Grunt funciona bem no Windows pois [Node.js](http://nodejs.org/) e [npm](http://npmjs.org/) também funcionam bem no Windows. Geralmente a parte problemática é o [Cygwin](http://www.cygwin.com/) já que ele vem com uma versão desatualizada do Node.js.
+O Grunt funciona bem no Windows pois o [Node.js](http://nodejs.org/) e o [npm](http://npmjs.org/) também funcionam bem no Windows. Geralmente a parte problemática é o [Cygwin](http://www.cygwin.com/) já que ele vem com uma versão desatualizada do Node.js.
 
-A melhor maneira de evitar esse problema é usar o [msysGit installer](http://msysgit.github.com/) para instalar os binários do `git` e o [Node.js installer](http://nodejs.org/#download) para instalar os binários do `node` e do `npm`, e usar o [Windows command prompt](http://www.cs.princeton.edu/courses/archive/spr05/cos126/cmd-prompt.html) ou [PowerShell](http://support.microsoft.com/kb/968929) embutidos em vez do Cygwin.
+A melhor maneira de evitar esse problema é usar o [Instalador msysGit](http://msysgit.github.com/) para instalar os binários do `git` e o [Instalador do Node.js](http://nodejs.org/#download) para instalar os binários do `node` e do `npm`, e usar o [prompt de comando do Windows](http://www.cs.princeton.edu/courses/archive/spr05/cos126/cmd-prompt.html) ou [PowerShell](http://support.microsoft.com/kb/968929) embutidos em vez do Cygwin.
 
-## Porque my tarefas assíncronas não completam?
+## Porque minhas tarefas assíncronas não completam?
 Provavelmente isto está acontencendo pois você esqueceu de chamar o método [this.async](grunt.task#wiki-this-async) que diz para o Grunt que sua tarefa é assíncrona. Para simplificar, o Grunt usa um estilo de codificação síncrono, que pode ser chaveado para o assíncrono chamando `this.async()` dentro do corpo da tarefa.
 
 Perceba que passar `false` para a função `done()` diz ao Grunt que a tarefa falhou.
@@ -23,8 +23,8 @@ grunt.registerTask('asyncme', 'My asynchronous task.', function() {
 });
 ```
 
-## Como eu habilito auto-completar usando tab no shell?
-Para habilitar auto-completar usando tab para grunt, adicione a seguinte linha no seu arquivo `~/.bashrc`:
+## Como eu habilito o auto-completar usando tab no shell?
+Para habilitar o auto-completar usando tab para grunt, adicione a seguinte linha no seu arquivo `~/.bashrc`:
 
 ```bash
 eval "$(grunt --completion=bash)"
@@ -33,12 +33,12 @@ eval "$(grunt --completion=bash)"
 Isso presume que o Grunt foi instalado globalmente com `npm install -g grunt`. Atualmente, o único shell suportado é o bash.
 
 ## Como posso compartilhar parâmetros entre múltiplas tarefas?
-Enquanto cada tarefa pode aceitar seus próprios parâmetros, existem algumas poucas opções disponívei para compartilhas parâmetros entre múltiplas tarefas.
+Enquanto cada tarefa pode aceitar seus próprios parâmetros, existem algumas poucas opções disponíveis para compartilhar parâmetros entre múltiplas tarefas.
 
 ### Tarefas com pseudônimo "Dynamic"
 **Esse é o método sugerido para compartilhar parâmetros entre múltiplas tarefas.**
 
-Enquanto tarefas [alias tasks](grunt#wiki-grunt-registerTask) são necessariamente simples, um tarefa normal pode usar [grunt.task.run](grunt.task#wiki-grunt-task-run) para fazê-la efetivamente funcionar como uma tarefa pseudônimo "dynamic". Nesse exemplo, executar `grunt build:001` na linha de comando resultaria na execução das tarefas `foo:001`, `bar:001` e `baz:001`.
+Enquanto tarefas [alias tasks](grunt#wiki-grunt-registerTask) são necessariamente simples, uma tarefa normal pode usar [grunt.task.run](grunt.task#wiki-grunt-task-run) para fazê-la efetivamente funcionar como uma tarefa pseudônima "dynamic". Nesse exemplo, executar `grunt build:001` na linha de comando resultaria na execução das tarefas `foo:001`, `bar:001` e `baz:001`.
 
 ```javascript
 grunt.registerTask('build', 'Run all my build tasks.', function(n) {
@@ -65,7 +65,7 @@ _Perceba que opções booleanas podem ser especificadas usando apenas a chave se
 
 ### Globals e configs
 
-Em outros casos, você pode desejar expor uma configuração ou valoes globais. Nesses casos, registre uma tarefa que configura seus argumentos como um valor global ou de configuração.
+Em outros casos, você pode desejar expor uma configuração ou valores globais. Nesses casos, registre uma tarefa que configura seus argumentos como um valor global ou de configuração.
 
 Nesse exemplo, executar `grunt set_global:name:peter set_config:target:staging deploy` na linha de comando faria `global.name` ser `"peter"` e `grunt.config('target')` retornar `"staging"`.
 Pode-se presumir que a tarefa `deploy` irá retornar esses valores.
