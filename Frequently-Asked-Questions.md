@@ -1,8 +1,8 @@
 ## Como eu instalo o grunt?
-Para instruções gerais de instalação, por favor leia o guia [[Começando]]. Se após a leitura desse guia, você precisar de informações mais específicas, leia o guia abrangente [[Instalando o grunt]]. 
+Para instruções gerais de instalação, por favor leia o guia [[[Getting Started]]. Se após a leitura desse guia, você precisar de informações mais específicas, leia o guia abrangente [[Installing grunt]]. 
 
 ## Quando poderei usar a funcionalidade em desenvolvimento 'X'?
-Instalação tanto de versões publicadas e não publicadas do Grunt é coberta no guia [[Instalando o grunt]].
+Instalação tanto de versões publicadas e não publicadas do Grunt é coberta no guia [[Installing grunt]].
 
 ## O Grunt funciona no Windows?
 O Grunt funciona bem no Windows pois o [Node.js](http://nodejs.org/) e o [npm](http://npmjs.org/) também funcionam bem no Windows. Geralmente a parte problemática é o [Cygwin](http://www.cygwin.com/) já que ele vem com uma versão desatualizada do Node.js.
@@ -87,7 +87,7 @@ grunt.registerTask('set_config', 'Set a config property.', function(name, val) {
 ## Perguntas relativas ao grunt 0.3
 
 ## No Windows com Grunt 0.3, porque meu editor JS abre quando eu tento executar o grunt?
-Se você está no mesmo diretório do [Gruntfile](Começando), o Windows tenta executar _esse arquivo_ quando você digita grunt. Portanto você precisa digitar `grunt.cmd` no lugar.
+Se você está no mesmo diretório do [Gruntfile]([Getting Started), o Windows tenta executar _esse arquivo_ quando você digita grunt. Portanto você precisa digitar `grunt.cmd` no lugar.
 
 Uma alternativa é usar o comando `DOSKEY` para criar uma macro Grunt, seguindo [essas instruções](http://devblog.point2.com/2010/05/14/setup-persistent-aliases-macros-in-windows-command-prompt-cmd-exe-using-doskey/). Isso permitirá usar `grunt` em vez de `grunt.cmd`.
 
