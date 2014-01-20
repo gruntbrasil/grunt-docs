@@ -1,8 +1,8 @@
 ## Como eu instalo o grunt?
-Para instruções gerais de instalação, por favor leia o guia [[Getting Started]]. Se após a leitura desse guia, você precisar de informações mais específicas, leia o guia abrangente [[Installing grunt]]. 
+Para instruções gerais de instalação, por favor leia o guia [[Começando]]. Se após a leitura desse guia, você precisar de informações mais específicas, leia o guia abrangente [[Instalando o grunt]]. 
 
 ## Quando poderei usar a funcionalidade em desenvolvimento 'X'?
-Instalação tanto de versões publicadas e não publicadas do Grunt é coberta no guia [[Installing grunt]].
+Instalação tanto de versões publicadas e não publicadas do Grunt é coberta no guia [[Instalando o grunt]].
 
 ## O Grunt funciona no Windows?
 O Grunt funciona bem no Windows pois o [Node.js](http://nodejs.org/) e o [npm](http://npmjs.org/) também funcionam bem no Windows. Geralmente a parte problemática é o [Cygwin](http://www.cygwin.com/) já que ele vem com uma versão desatualizada do Node.js.
@@ -35,10 +35,10 @@ Isso presume que o Grunt foi instalado globalmente com `npm install -g grunt`. A
 ## Como posso compartilhar parâmetros entre múltiplas tarefas?
 Enquanto cada tarefa pode aceitar seus próprios parâmetros, existem algumas poucas opções disponíveis para compartilhar parâmetros entre múltiplas tarefas.
 
-### Tarefas com pseudônimo "Dynamic"
+### Tarefas de atalho "Dynamic"
 **Esse é o método sugerido para compartilhar parâmetros entre múltiplas tarefas.**
 
-Enquanto tarefas [alias tasks](grunt#wiki-grunt-registerTask) são necessariamente simples, uma tarefa normal pode usar [grunt.task.run](grunt.task#wiki-grunt-task-run) para fazê-la efetivamente funcionar como uma tarefa pseudônima "dynamic". Nesse exemplo, executar `grunt build:001` na linha de comando resultaria na execução das tarefas `foo:001`, `bar:001` e `baz:001`.
+Enquanto tarefas [alias tasks](grunt#wiki-grunt-registerTask) são necessariamente simples, uma tarefa normal pode usar [grunt.task.run](grunt.task#wiki-grunt-task-run) para fazê-la efetivamente funcionar como uma tarefa de atalho "dynamic". Nesse exemplo, executar `grunt build:001` na linha de comando resultaria na execução das tarefas `foo:001`, `bar:001` e `baz:001`.
 
 ```javascript
 grunt.registerTask('build', 'Run all my build tasks.', function(n) {
@@ -87,7 +87,7 @@ grunt.registerTask('set_config', 'Set a config property.', function(name, val) {
 ## Perguntas relativas ao grunt 0.3
 
 ## No Windows com Grunt 0.3, porque meu editor JS abre quando eu tento executar o grunt?
-Se você está no mesmo diretório do [Gruntfile](Getting-started), o Windows tenta executar _esse arquivo_ quando você digita grunt. Portanto você precisa digitar `grunt.cmd` no lugar.
+Se você está no mesmo diretório do [Gruntfile](Começando), o Windows tenta executar _esse arquivo_ quando você digita grunt. Portanto você precisa digitar `grunt.cmd` no lugar.
 
 Uma alternativa é usar o comando `DOSKEY` para criar uma macro Grunt, seguindo [essas instruções](http://devblog.point2.com/2010/05/14/setup-persistent-aliases-macros-in-windows-command-prompt-cmd-exe-using-doskey/). Isso permitirá usar `grunt` em vez de `grunt.cmd`.
 
