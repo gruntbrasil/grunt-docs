@@ -1,6 +1,6 @@
-As tarefas são o pão com manteiga do Grunt. As coisas que você mais faz, como `jshint` ou `nodeunit`. Toda vez que o Grunt é executado, você especifica uma ou mais tarefas a serem executadas, que diz ao Grunt o que você gostaria de fazer.
+As tarefas são o café com leite do Grunt. As coisas que você mais faz, como `jshint` ou `nodeunit`. Toda vez que o Grunt é executado, você especifica uma ou mais tarefas a serem executadas, que diz ao Grunt o que você gostaria de fazer.
 
-Se você não especificar uma tarefa, mas a tarefa nomeada "default" foi definida, esta tarefa vai ser executada (obviamente) por padrão.
+Se você não especificar uma tarefa, mas uma tarefa nomeada "default" foi definida, esta tarefa vai ser executada (obviamente) por padrão.
 
 ## Atalhos de Tarefas
 Se uma lista de tarefas foi especificada, a nova tarefa vai ser um atalho para uma ou mais tarefas. Sempre que este "atalho de tarefa" é executado, todas as tarefas especificadas na `taskList` vão ser executadas, em suas respectivas ordens. O argumento `taskList` deve ser um array de tarefas.
@@ -118,7 +118,7 @@ grunt.registerTask('foo', 'Minha tarefa "foo".', function(a, b) {
 //   registra: "foo", "bar", "baz"
 ```
 
-As tarefas podem falhar se quaisquer erros foram registrados
+As tarefas podem falhar se algum erro for registrado.
 
 ```javascript
 grunt.registerTask('foo', 'Minha tarefa "foo".', function() {
@@ -133,7 +133,7 @@ grunt.registerTask('foo', 'Minha tarefa "foo".', function() {
 });
 ```
 
-Quando tarefas falham, todas as tarefas subsequentes são interrompidas se a opção `--force` foi especificada.
+Quando tarefas falham, todas as tarefas subsequentes são interrompidas a menos que a opção `--force` foi especificada.
 
 ```javascript
 grunt.registerTask('foo', 'My "foo" task.', function() {
