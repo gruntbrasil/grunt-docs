@@ -16,10 +16,10 @@ grunt.util.error(message [, origError])
 ```
 
 ### grunt.util.linefeed
-O caractere para avanço de linha, normalizado para o padrão atual sistema operacional. (`\r\n` no Windows, `\n` em outros sistemas)
+O caractere para avanço de linha, normalizado para o padrão atual do sistema operacional. (`\r\n` no Windows, `\n` em outros sistemas)
 
 ### grunt.util.normalizelf
-Fornecido uma string, retorna uma nova string com todos os avanços de linhas normalizados para o padrão atual sistema operacional. (`\r\n` no Windows, `\n` em outros sistemas)
+Fornecido uma string, retorna uma nova string com todos os avanços de linhas normalizados para o padrão atual do sistema operacional. (`\r\n` no Windows, `\n` em outros sistemas)
 
 ```js
 grunt.util.normalizelf(string)
