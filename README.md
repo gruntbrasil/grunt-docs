@@ -14,7 +14,7 @@ Tradução da documentação do [GruntJS](http://gruntjs.com/)
   * [Criando Plugins](Creating-plugins.md)
   * [Usando o CLI](Using-the-CLI.md)
 2. Avançado
-  * [Instalando o Grunt](Installing-Grunt.md)
+  * [Instalando o Grunt](Installing-grunt.md)
   * [FAQ](Frequently-Asked-Questions.md)
   * [Estruturando Projetos](Project-Scaffolding.md)
 3. Comunidade
