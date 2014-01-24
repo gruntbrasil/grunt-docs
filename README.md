@@ -12,7 +12,7 @@ Tradução da documentação do [GruntJS](http://gruntjs.com/)
   * [Exemplo do Gruntfile](Sample-Gruntfile.md)
   * [Criando Tarefas](Creating-tasks.md)
   * [Criando Plugins](Creating-plugins.md)
-  * [Usando o CLI](Using-the-CLI)
+  * [Usando o CLI](Using-the-CLI.md)
 2. Avançado
   * [Instalando o Grunt](Installing-Grunt.md)
   * [FAQ](Frequently-Asked-Questions.md)
