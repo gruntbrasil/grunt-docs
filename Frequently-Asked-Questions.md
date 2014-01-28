@@ -1,20 +1,20 @@
-## How do I install grunt?
-For general installation instructions, please read the [[Getting Started]] guide. If you need more specific information after having read that, read the comprehensive [[Installing grunt]] guide.
+## Como eu instalo o grunt?
+Para instruções gerais de instalação, por favor leia o guia [[[Getting Started]]. Se após a leitura desse guia, você precisar de informações mais específicas, leia o guia abrangente [[Installing grunt]]. 
 
-## When will I be able to use in-development feature 'X'?
-Installing both published and unpublished development versions of Grunt is covered in the [[Installing grunt]] guide.
+## Quando poderei usar a funcionalidade em desenvolvimento 'X'?
+Instalação tanto de versões publicadas e não publicadas do Grunt é coberta no guia [[Installing grunt]].
 
-## Does Grunt work on Windows?
-Grunt works fine on Windows, because [Node.js](http://nodejs.org/) and [npm](http://npmjs.org/) both work fine on Windows. Usually the problematic part is [Cygwin](http://www.cygwin.com/), because it bundles an outdated version of Node.js.
+## O Grunt funciona no Windows?
+O Grunt funciona bem no Windows pois o [Node.js](http://nodejs.org/) e o [npm](http://npmjs.org/) também funcionam bem no Windows. Geralmente a parte problemática é o [Cygwin](http://www.cygwin.com/) já que ele vem com uma versão desatualizada do Node.js.
 
-The best way to avoid this issue is to use the [msysGit installer](http://msysgit.github.com/) to install the `git` binary and the [Node.js installer](http://nodejs.org/#download) to install the `node` and `npm` binaries, and to use the built-in [Windows command prompt](http://www.cs.princeton.edu/courses/archive/spr05/cos126/cmd-prompt.html) or [PowerShell](http://support.microsoft.com/kb/968929) instead of Cygwin.
+A melhor maneira de evitar esse problema é usar o [Instalador msysGit](http://msysgit.github.com/) para instalar os binários do `git` e o [Instalador do Node.js](http://nodejs.org/#download) para instalar os binários do `node` e do `npm`, e usar o [prompt de comando do Windows](http://www.cs.princeton.edu/courses/archive/spr05/cos126/cmd-prompt.html) ou [PowerShell](http://support.microsoft.com/kb/968929) embutidos em vez do Cygwin.
 
-## Why doesn't my asynchronous task complete?
-Chances are this is happening because you have forgotten to call the [this.async](grunt.task#wiki-this-async) method to tell Grunt that your task is asynchronous. For simplicity's sake, Grunt uses a synchronous coding style, which can be switched to asynchronous by calling `this.async()` within the task body.
+## Porque minhas tarefas assíncronas não completam?
+Provavelmente isto está acontencendo pois você esqueceu de chamar o método [this.async](grunt.task#wiki-this-async) que diz para o Grunt que sua tarefa é assíncrona. Para simplificar, o Grunt usa um estilo de codificação síncrono, que pode ser chaveado para o assíncrono chamando `this.async()` dentro do corpo da tarefa.
 
-Note that passing `false` to the `done()` function tells Grunt that the task has failed.
+Perceba que passar `false` para a função `done()` diz ao Grunt que a tarefa falhou.
 
-For example:
+Por exemplo:
 
 ```javascript
 grunt.registerTask('asyncme', 'My asynchronous task.', function() {
@@ -23,22 +23,22 @@ grunt.registerTask('asyncme', 'My asynchronous task.', function() {
 });
 ```
 
-## How do I enable shell tab auto-completion?
-To enable bash tab auto-completion for grunt, add the following line to your `~/.bashrc` file:
+## Como eu habilito o auto-completar usando tab no shell?
+Para habilitar o auto-completar usando tab para grunt, adicione a seguinte linha no seu arquivo `~/.bashrc`:
 
 ```bash
 eval "$(grunt --completion=bash)"
 ```
 
-This assumes that Grunt has been installed globally with `npm install -g grunt`. Currently, the only supported shell is bash.
+Isso presume que o Grunt foi instalado globalmente com `npm install -g grunt`. Atualmente, o único shell suportado é o bash.
 
-## How can I share parameters across multiple tasks?
-While each task can accept its own parameters, there are a few options available for sharing parameters across multiple tasks.
+## Como posso compartilhar parâmetros entre múltiplas tarefas?
+Enquanto cada tarefa pode aceitar seus próprios parâmetros, existem algumas poucas opções disponíveis para compartilhar parâmetros entre múltiplas tarefas.
 
-### "Dynamic" alias tasks
-**This is the preferred method for sharing parameters across multiple tasks.**
+### Tarefas de atalho "Dynamic"
+**Esse é o método sugerido para compartilhar parâmetros entre múltiplas tarefas.**
 
-Whereas [alias tasks](grunt#wiki-grunt-registerTask) are necessarily simple, a regular task can use [grunt.task.run](grunt.task#wiki-grunt-task-run) to make it effectively function as a "dynamic" alias task. In this example, running `grunt build:001` on the command line would result in the `foo:001`, `bar:001` and `baz:001` tasks being run.
+Enquanto tarefas [alias tasks](grunt#wiki-grunt-registerTask) são necessariamente simples, uma tarefa normal pode usar [grunt.task.run](grunt.task#wiki-grunt-task-run) para fazê-la efetivamente funcionar como uma tarefa de atalho "dynamic". Nesse exemplo, executar `grunt build:001` na linha de comando resultaria na execução das tarefas `foo:001`, `bar:001` e `baz:001`.
 
 ```javascript
 grunt.registerTask('build', 'Run all my build tasks.', function(n) {
@@ -51,23 +51,24 @@ grunt.registerTask('build', 'Run all my build tasks.', function(n) {
 
 ### -- options
 
-Another way to share a parameter across multiple tasks would be to use [grunt.option](grunt#wiki-grunt-option). In this example, running `grunt deploy --target=staging` on the command line would cause `grunt.option('target')` to return `"staging"`.
+Outro jeito de compartilhar parâmetros entre múltiplas tarefas é usar [grunt.option](grunt#wiki-grunt-option). Nesse exemplo, executar `grunt deploy --target=staging` na linha de comando faria `grunt.option('target')` retornar `"staging"`.
 
 ```javascript
 grunt.registerTask('upload', 'Upload code to specified target.', function(n) {
   var target = grunt.option('target');
-  // do something useful with target here
+  // fazer algo útil com target aqui
 });
 grunt.registerTask('deploy', ['validate', 'upload']);
 ```
 
-_Note that boolean options can be specified using just a key without a value. For example, running `grunt deploy --staging` on the command line would cause `grunt.option('staging')` to return `true`._
+_Perceba que opções booleanas podem ser especificadas usando apenas a chave sem o valor. Por exemplo, executar `grunt deploy --staging` na linha de comando faria `grunt.option('staging')` retornar `true`._
 
-### Globals and configs
+### Globals e configs
 
-In other cases, you may want to expose a way to set configuration or global values. In those cases, register a task that sets its arguments as a global or config value.
+Em outros casos, você pode desejar expor uma configuração ou valores globais. Nesses casos, registre uma tarefa que configura seus argumentos como um valor global ou de configuração.
 
-In this example, running `grunt set_global:name:peter set_config:target:staging deploy` on the command line would cause `global.name` to be `"peter"` and `grunt.config('target')` to return `"staging"`. Presumably, the `deploy` task would use those values.
+Nesse exemplo, executar `grunt set_global:name:peter set_config:target:staging deploy` na linha de comando faria `global.name` ser `"peter"` e `grunt.config('target')` retornar `"staging"`.
+Pode-se presumir que a tarefa `deploy` irá retornar esses valores.
 
 ```javascript
 grunt.registerTask('set_global', 'Set a global variable.', function(name, val) {
@@ -83,14 +84,14 @@ grunt.registerTask('set_config', 'Set a config property.', function(name, val) {
 ***
 
 
-## grunt 0.3 Questions
+## Perguntas relativas ao grunt 0.3
 
-## On Windows with Grunt 0.3, why does my JS editor open when I try to run grunt?
-If you're in the same directory as the [Gruntfile](Getting-started), Windows tries to execute _that file_ when you type grunt. So you need to type `grunt.cmd` instead.
+## No Windows com Grunt 0.3, porque meu editor JS abre quando eu tento executar o grunt?
+Se você está no mesmo diretório do [Gruntfile]([Getting Started), o Windows tenta executar _esse arquivo_ quando você digita grunt. Portanto você precisa digitar `grunt.cmd` no lugar.
 
-An alternative would be to use the `DOSKEY` command to create a Grunt macro, following [these directions](http://devblog.point2.com/2010/05/14/setup-persistent-aliases-macros-in-windows-command-prompt-cmd-exe-using-doskey/). That would allow you to use `grunt` instead of `grunt.cmd`.
+Uma alternativa é usar o comando `DOSKEY` para criar uma macro Grunt, seguindo [essas instruções](http://devblog.point2.com/2010/05/14/setup-persistent-aliases-macros-in-windows-command-prompt-cmd-exe-using-doskey/). Isso permitirá usar `grunt` em vez de `grunt.cmd`.
 
-This is the `DOSKEY` command you'd use:
+Esse é o comando `DOSKEY` que você pode usar:
 
 ```
 DOSKEY grunt=grunt.cmd $*
