@@ -1,70 +1,81 @@
-## grunt-init
-Grunt-init is a scaffolding tool used to automate project creation. It will build an entire directory structure based on the current environment and the answers to a few questions. The exact files and contents created depend on the template chosen along with the answers to the questions asked.
+# Grunt-init
 
-_Note: This standalone utility used to be built-in to Grunt as the "init" task. See the Grunt [Upgrading from 0.3 to 0.4](https://github.com/gruntjs/grunt/wiki/Upgrading-from-0.3-to-0.4) guide for more information about this change._
+O grunt-init é uma ferramenta capaz de automatizar a criação de um projeto. Ele constrói uma estrutura completa com base no ambiente atual e em algumas respostas. Os arquivos e conteúdos a serem criados, dependem das escolhas feitas durante as perguntas realizadas.
 
-## Installation
-In order to use grunt-init, you'll want to install it globally.
+_Obseravação: este utilitário costumava ser embutido no Grunt como uma tarefa de nome "init". Veja o guia [Atualizando do 0.3 para 0.4](https://github.com/gruntjs/grunt/wiki/Upgrading-from-0.3-to-0.4) do Grunt para mais informações a respeito desta mudança._
+
+## Instalação
+
+Para utilizar o grunt-init, é necessário realizar a sua instalação de forma global.
 
 ```shell
 npm install -g grunt-init
 ```
 
-This will put the `grunt-init` command in your system path, allowing it to be run from anywhere.
+Isso fará com que o comando `grunt-init` seja habilitado no seu sistema, sendo possível executá-lo em qualquer local.
 
-_Notes: You may need to use sudo or run your command shell as Administrator to do this._
+_Obseravação: provavelmente, você precise utilizar `sudo` (para OSX, ***nix, BSD, etc) ou rodar este comando como administrador (Windows)._
 
-## Usage
-* Get program help and a listing of available templates with `grunt-init --help`
-* Create a project based around an available template with `grunt-init TEMPLATE`
-* Create a project based around a arbitrarily-located template with `grunt-init /path/to/TEMPLATE`
 
-Note that most templates generate their files in the current directory, so be sure to change to a new directory first if you don't want to overwrite existing files.
+## Como utilizar
 
-## Installing templates
-Once templates are installed into your `~/.grunt-init/` directory (`%USERPROFILE%\.grunt-init\` on Windows) they will be available for use via grunt-init. It's recommended that you use git to clone a template into that directory. For example, the [grunt-init-jquery](https://github.com/gruntjs/grunt-init-jquery) template can be installed like so:
+* Para ajuda e lista de templates disponíveis, execute: `grunt-init --help`
+* Criar um projeto baseado em um template: `grunt-init TEMPLATE`
+* Criar um projeto baseado em um template em um determinado local: `grunt-init /path/to/TEMPLATE`
 
+Perceba que os templates geram seus arquivos no diretório atual, então certifique-se de estar em um novo diretório para que os seus arquivos anteriores não sejam substituídos.
+
+
+## Instalando Templates
+
+Uma vez que os templates estiverem instalados dentro do seu diretório `~/.grunt-init/` (`%USERPROFILE%\.grunt-init\` no Windows), eles estarão disponíveis para a utilização com o grunt-init. É recomendável que você utilize o git para clonar um template para este diretório. Por exemplo, o template [grunt-init-jquery](https://github.com/gruntjs/grunt-init-jquery) pode ser instalado da seguinte forma:
+
+```bash
+git clone git@github.com:gruntjs/grunt-init-jquery.git ~/.grunt-init/jquery
 ```
-git clone https://github.com/gruntjs/grunt-init-jquery.git ~/.grunt-init/jquery
-```
+_Observação: se você quiser que o template fique disponível localmente como "foobarbaz", você pode especificar `~/.grunt-init/foobarbaz` enquanto realiza o clonagem. O grunt-init utilizará o nome do diretório atual do template, uma vez que exista dentro do diretório `~/.grunt-init/`_
 
-_Note: if you want to make the template available locally as "foobarbaz" you could specify `~/.grunt-init/foobarbaz` while cloning. Grunt-init will use the actual template directory name as it exists inside of the `~/.grunt-init/` directory._
+Alguns templates que são mantidos oficialmente:
 
-A few grunt-init templates are maintained officially:
+* [grunt-init-commonjs](https://github.com/gruntjs/grunt-init-commonjs) - Cria um módulo commonjs, incluindo testes unitários com o Nodeunit. ([sample "generated" repo](https://github.com/gruntjs/grunt-init-commonjs-sample/tree/generated) | [creation transcript](https://github.com/gruntjs/grunt-init-commonjs-sample#project-creation-transcript))
+* [grunt-init-gruntfile](https://github.com/gruntjs/grunt-init-gruntfile) - Cria um Gruntfile básico. ([sample "generated" repo](https://github.com/gruntjs/grunt-init-gruntfile-sample/tree/generated) | [creation transcript](https://github.com/gruntjs/grunt-init-gruntfile-sample#project-creation-transcript))
+* [grunt-init-gruntplugin](https://github.com/gruntjs/grunt-init-gruntplugin) - Cria um plugin Grunt, incluindo testes unitários com o Nodeunit. ([sample "generated" repo](https://github.com/gruntjs/grunt-init-gruntplugin-sample/tree/generated) | [creation transcript](https://github.com/gruntjs/grunt-init-gruntplugin-sample#project-creation-transcript))
+* [grunt-init-jquery](https://github.com/gruntjs/grunt-init-jquery) - Cria um plugin para jQuery, incluindo testes unitários com o QUnit. ([sample "generated" repo](https://github.com/gruntjs/grunt-init-jquery-sample/tree/generated) | [creation transcript](https://github.com/gruntjs/grunt-init-jquery-sample#project-creation-transcript))
+* [grunt-init-node](https://github.com/gruntjs/grunt-init-node) - Cria um módulo Node.js, incluindo testes unitários com o Nodeunit. ([sample "generated" repo](https://github.com/gruntjs/grunt-init-node-sample/tree/generated) | [creation transcript](https://github.com/gruntjs/grunt-init-node-sample#project-creation-transcript))
 
-* [grunt-init-commonjs](https://github.com/gruntjs/grunt-init-commonjs) - Create a commonjs module, including Nodeunit unit tests. ([sample "generated" repo](https://github.com/gruntjs/grunt-init-commonjs-sample/tree/generated) | [creation transcript](https://github.com/gruntjs/grunt-init-commonjs-sample#project-creation-transcript))
-* [grunt-init-gruntfile](https://github.com/gruntjs/grunt-init-gruntfile) - Create a basic Gruntfile. ([sample "generated" repo](https://github.com/gruntjs/grunt-init-gruntfile-sample/tree/generated) | [creation transcript](https://github.com/gruntjs/grunt-init-gruntfile-sample#project-creation-transcript))
-* [grunt-init-gruntplugin](https://github.com/gruntjs/grunt-init-gruntplugin) - Create a Grunt plugin, including Nodeunit unit tests. ([sample "generated" repo](https://github.com/gruntjs/grunt-init-gruntplugin-sample/tree/generated) | [creation transcript](https://github.com/gruntjs/grunt-init-gruntplugin-sample#project-creation-transcript))
-* [grunt-init-jquery](https://github.com/gruntjs/grunt-init-jquery) - Create a jQuery plugin, including QUnit unit tests. ([sample "generated" repo](https://github.com/gruntjs/grunt-init-jquery-sample/tree/generated) | [creation transcript](https://github.com/gruntjs/grunt-init-jquery-sample#project-creation-transcript))
-* [grunt-init-node](https://github.com/gruntjs/grunt-init-node) - Create a Node.js module, including Nodeunit unit tests. ([sample "generated" repo](https://github.com/gruntjs/grunt-init-node-sample/tree/generated) | [creation transcript](https://github.com/gruntjs/grunt-init-node-sample#project-creation-transcript))
 
-## Custom templates
-You can create and use custom templates. Your template must follow the same structure as the aforementioned templates.
+## Templates Customizados
 
-A sample template named `my-template` would follow this general file structure:
+Você pode criar e usar templates personalizados. O seu template deve seguir a mesma estrutura que os templates acima mencionados.
 
-* `my-template/template.js` - the main template file.
-* `my-template/rename.json` - template-specific rename rules, processed as templates.
-* `my-template/root/` - files to be copied into the target location.
+Um template de exemplo chamado `meu-template` deve seguir a seguinte estrutura geral para os arquivos:
 
-Assuming these files exist at `/path/to/my-template`, the command `grunt-init /path/to/my-template` would be used to process the template. Multiple uniquely-named templates may exist in the same directory.
+* `meu-template/template.js` - o arquivo de template principal
+* `meu-template/rename.json` - regras especificas para renomear templates
+* `meu-template/root/` - arquivos à serem copiados no local desejado
 
-Additionally, if you place this custom template in your `~/.grunt-init/` directory (`%USERPROFILE%\.grunt-init\` on Windows) it will be automatically available to be used with just `grunt-init my-template`.
+Na certeza de que estes arquivos constam no `/caminho/para/meu-template`, o comando grunt-init será utilizado para processar o template. Vários templates de nomes exclusivos podem existir em um mesmo diretório.
 
-### Copying files
-As long as a template uses the `init.filesToCopy` and `init.copyAndProcess` methods, any files in the `root/` subdirectory will be copied to the current directory when the init template is run.
+Além disso, se você colocar este template customizado no seu diretório `~/.grunt-init/` (`%USERPROFILE%\.grunt-init\` no Windows) ele será automaticamente habilitado para ser utilizado somente com `grunt-init meu-template`.
 
-Note that all copied files will be processed as templates, with any `{% %}` template being processed against the collected `props` data object, unless the `noProcess` option is set. See the [jquery template](https://github.com/gruntjs/grunt-init-jquery) for an example.
 
-### Renaming or excluding template files
-The `rename.json` describes `sourcepath` to `destpath` rename mappings. The `sourcepath` must be the path of the file-to-be-copied relative to the `root/` folder, but the `destpath` value can contain `{% %}` templates, describing what the destination path will be.
+### Copiando os arquivos
 
-If `false` is specified as a `destpath` the file will not be copied. Also, glob patterns are supported for `srcpath`.
+Enquanto o template utilizar os métodos `init.filesToCopy` e `init.copyAndProcess`, qualquer arquivo no sub-diretório `/root` será copiado para o diretório atual quando a inicialização do template for executada.
 
-## Specifying default prompt answers
-Each init prompt either has a default value hard-coded or it looks at the current environment to attempt to determine that default value. If you want to override a particular prompt's default value, you can do so in the optional OS X or Linux `~/.grunt-init/defaults.json` or Windows `%USERPROFILE%\.grunt-init\defaults.json` file.
+Note que todos os arquivos copiados serão processados como templates, com qualquer delimitador `{% %}` ques estiverem sendo processados com os dados dos objetos `props` coletados, a menos que a opção `noProcess` esteja definida. Veja o [jquery template](https://github.com/gruntjs/grunt-init-jquery), por exemplo.
 
-For example, my `defaults.json` file looks like this, because I want to use a slightly different name than the default name, I want to exclude my email address, and I want to specify an author url automatically.
+### Renomeando ou excluíndo arquivos do template
+
+O `rename.json` descreve o mapeamento do `sourcepath` para o `destpath`. O `sourcepath` precisa ser o caminho relativo do arquivo que será copiado para o diretório `root/`, mas o valor do `destpah` pode conter delimitadores `{% %}`, descrevendo como será o caminho de destino.
+
+Caso `destpath` esteja definido como `false`, o arquivo não será copiado. Além disso, padrões globais (glob patterns) são suportados em `srcpath`.
+
+## Especificando respostas padrões
+
+Cada prompt de inicialização terá um valor padrão ou fará uma busca no ambiente atual para determinar um valor padrão. Se você quiser sobrescrever um valor padrão em particular, você pode fazê-lo com o arquivo `defaults.json`.
+
+Por exemplo, meu arquivo `defaults.json` se parece com isso, pois eu quero usar um nome ligeiramente diferente do nome padrão, eu quero excluir o meu endereço de e-mail, e eu quero especificar uma url para o autor automaticamente.
 
 ```json
 {
@@ -74,59 +85,77 @@ For example, my `defaults.json` file looks like this, because I want to use a sl
 }
 ```
 
-_Note: until all the built-in prompts have been documented, you can find their names and default values in the [source code](https://github.com/gruntjs/grunt-init/blob/master/tasks/init.js)._
+_Note: até que todas as solicitações internas tenham sido documentadas, você pode encontrar os seus nomes e os valores padrões no [código fonte](https://github.com/gruntjs/grunt-init/blob/master/tasks/init.js)._
 
-## Defining an init template
+## Definindo um template inicial
 
 ### exports.description
-This brief template description will be displayed along with the template name when the user runs `grunt init` or `grunt-init ` to display a list of all available init templates.
+
+Esta breve descrição do template será exibida junto ao nome do template quando o usuário executar o comando `grunt init` ou `grunt-init` para listar todos os templates disponíveis.
 
 ```js
-exports.description = descriptionString;
+exports.description = "A descrição vai aqui.";
 ```
 
 ### exports.notes
-If specified, this optional extended description will be displayed before any prompts are displayed. This is a good place to give the user a little help explaining naming conventions, which prompts may be required or optional, etc.
+
+Se for especificado, esta descrição estendida opcional será exibida antes que quaisquer prompts forem exibidos. Este é um bom lugar para dar ao usuário uma pequena ajuda explicando convenções de nomenclatura, que podem ser obrigatórios ou opcionais, etc.
 
 ```js
-exports.notes = notesString;
+exports.notes = "Uma nota adicional qualquer"
 ```
 
 ### exports.warnOn
-If this optional (but recommended) wildcard pattern or array of wildcard patterns is matched, Grunt will abort with a warning that the user can override with `--force`. This is very useful in cases where the init template could potentially override existing files.
+
+Se este opcional (mas recomendado) padrão *willdcard* ou array de padrões willdcards se relacionarem, o Grunt será abortado com um aviso de que o usuário poderá continuar com `--force`. Isto é muito útil nos casos em que o init template venha a substituir arquivos existentes.
 
 ```js
 exports.warnOn = wildcardPattern;
 ```
 
-While the most common value will be `'*'`, matching any file or directory, the [minimatch](https://github.com/isaacs/minimatch) wildcard pattern syntax used allows for a lot of flexibility. For example:
+Enquanto o valor mais comum será `'*'`, sendo equivalente a qualquer arquivo ou diretório, a sintaxe padrão do curinga [minimatch](https://github.com/isaacs/minimatch) utilizado permitirá uma grande flexibilidade. Por exemplo:
 
 ```js
-exports.warnOn = 'Gruntfile.js';        // Warn on a Gruntfile.js file.
-exports.warnOn = '*.js';            // Warn on any .js file.
-exports.warnOn = '*';               // Warn on any non-dotfile or non-dotdir.
-exports.warnOn = '.*';              // Warn on any dotfile or dotdir.
-exports.warnOn = '{.*,*}';          // Warn on any file or dir (dot or non-dot).
-exports.warnOn = '!*/**';           // Warn on any file (ignoring dirs).
-exports.warnOn = '*.{png,gif,jpg}'; // Warn on any image file.
+// Avisar no arquivo Gruntfile.js.
+exports.warnOn = 'Gruntfile.js';
 
-// This is another way of writing the last example.
+// Avisar em qualquer arquivo .js.
+exports.warnOn = '*.js';
+
+// Avisar em qualquer arquivo ou diretório que não seja "sem ponto" (dotfile/dotdir).
+exports.warnOn = '*';
+
+// Avisar em qualquer arquivo ou diretório "sem ponto" (dotfile/dotdir).
+exports.warnOn = '.*';
+
+// Avisar em qualquer arquivo ou diretório "sem ponto" ou "com ponto".
+exports.warnOn = '{.*,*}';
+
+// Avisar em qualquer arquivo (ignorando diretórios).
+exports.warnOn = '!*/**';
+
+// Avisar em qualquer arquivo de imagem.
+exports.warnOn = '*.{png,gif,jpg}';
+
+// Esta é outra maneira para descrever o exemplo anterior.
 exports.warnOn = ['*.png', '*.gif', '*.jpg'];
 ```
 
 ### exports.template
-While the `exports` properties are defined outside this function, all the actual init code is specified inside. Three arguments are passed into this function. The `grunt` argument is a reference to grunt, containing all the [grunt methods and libs](api/grunt). The `init` argument is an object containing methods and properties specific to this init template. The `done` argument is a function that must be called when the init template is done executing.
+
+Enquanto as propriedades `exports` são definidas fora dessa função, todo o código de inicialização atual é especificado dentro. Três argumentos são passados nesta função. O argumento `grunt` é uma referência ao grunt, contendo todos os métodos e bibliotecas do grunt. O argumento `init` é um objeto que contém métodos e propriedades específicas para este template. O argumento `done` é uma função que deve ser chamada quando o template finalizar a sua execução.
 
 ```js
 exports.template = function(grunt, init, done) {
-  // See the "Inside an init template" section.
+  // Veja a seção "Dentro de um init template"
 };
 ```
 
-## Inside an init template
+## Por dentro do init template
 
 ### init.addLicenseFiles
-Add properly-named license files to the files object.
+
+Adiciona os nomes apropriados para os arquivos de licenças ao objeto *files*.
 
 ```js
 var files = {};
@@ -136,7 +165,8 @@ init.addLicenseFiles(files, licenses);
 ```
 
 ### init.availableLicenses
-Return an array of available licenses.
+
+Retorna um array com as licenças disponíveis.
 
 ```js
 var licenses = init.availableLicenses();
@@ -144,47 +174,50 @@ var licenses = init.availableLicenses();
 ```
 
 ### init.copy
-Given an absolute or relative source path, and an optional relative
-destination path, copy a file, optionally processing it through the
-passed callback.
+
+Através de um caminho de origem absoluto ou relativo, e um caminho de destino opcional, copia o arquivo, podendo ser processado opcionalmente através de um *callback*.
 
 ```js
 init.copy(srcpath[, destpath], options)
 ```
 
 ### init.copyAndProcess
-Iterate over all files in the passed object, copying the source file to
-the destination, processing the contents.
+
+Itera todos os arquivos no objeto passado, copiando o arquivo da fonte para o destino, processando os conteúdos.
 
 ```js
 init.copyAndProcess(files, props[, options])
 ```
 
 ### init.defaults
-User-specified default init values from `defaults.json`.
+
+Valores padrões de inicialização que foram especificados pelo usuário no arquivo `defaults.json`.
 
 ```js
 init.defaults
 ```
 
 ### init.destpath
-Absolute destination file path.
+
+Destino absoluto do arquivo.
 
 ```js
 init.destpath()
 ```
 
 ### init.expand
-Same as [grunt.file.expand](https://github.com/gruntjs/grunt/wiki/grunt.file#wiki-grunt-file-expand).
 
-Return a unique array of all file or directory paths that match the given wildcard pattern(s). This method accepts either comma separated wildcard patterns or an array of wildcard patterns. Paths matching patterns that begin with ! will be excluded from the returned array. Patterns are processed in order, so inclusion and exclusion order is significant.
+O mesmo que [grunt.file.expand](https://github.com/gruntjs/grunt/wiki/grunt.file#wiki-grunt-file-expand).
+
+Retorna um array único com todos os arquivos ou caminhos que correspondam a determinado padrão `wildcard`. Este método aceita a sepração por vírgulas ou um array de padrões `wildcard`. Caminhos que correspondam a padrões començando com `!`, serão excluídos do array retornado. Os padrões são processados em ordem, então a ordem de inclusão e exclusão é significativa.
 
 ```js
 init.expand([options, ] patterns)
 ```
 
 ### init.filesToCopy
-Return an object containing files to copy with their absolute source path and relative destination path, renamed (or omitted) according to rules in rename.json (if it exists).
+
+Retorna um objeto contendo arquivo a serem copiados com os seus caminhos de origem absolutos e caminhos de destino relativos, renomeando (ou omitindo) de acordo com as regras em `rename.json` (caso exista).
 
 ```js
 var files = init.filesToCopy(props);
@@ -196,69 +229,72 @@ var files = init.filesToCopy(props);
 ```
 
 ### init.getFile
-Get a single task file path.
+
+Pega o caminho do arquivo de uma tarefa.
 
 ```js
 init.getFile(filepath[, ...])
 ```
 
 ### init.getTemplates
-Returns an object of all the available templates.
+
+Retorna um objeto de todos os templates existentes.
 
 ```js
 init.getTemplates()
 ```
 
 ### init.initSearchDirs
-Initialize the directories to search for init templates. `template` is the
-location of a template. Will also include `~/.grunt-init/` and the core init
-tasks within grunt-init.
+
+Inicializa os diretórios em busca de init templates. `template` é a localização de um template. Também incluirá `~/.grunt-init/` e a inicialização principal das tarefas através do grunt-init.
 
 ```js
 init.initSearchDirs([filename])
 ```
 
 ### init.process
-Start up the process to begin prompting for input.
+
+Inicia o processo para começar a solicitação de entrada de dados.
 
 ```js
 init.process(options, prompts, done)
-```
-
-```js
 init.process({}, [
-  // Prompt for these values
+  // Prompt para estes valores
   init.prompt('name'),
   init.prompt('description'),
   init.prompt('version')
 ], function(err, props) {
-  // All finished, do something with the properties
+  // Finalizado, faça algo com as propriedades
 });
 ```
 
 ### init.prompt
-Prompt a user for a value.
+
+Solicita uma entrada de valor para o usuário.
 
 ```js
 init.prompt(name[, default])
 ```
 
 ### init.prompts
-An object of all the prompts.
+
+Um objeto de todos os *prompts*
 
 ```js
 var prompts = init.prompts;
 ```
 
 ### init.readDefaults
-Read JSON defaults from task files (if they exist), merging them into one data object.
+
+Faz a leitura dos valores padrões do JSON a partir dos arquivos de tarefas (se existirem), mesclando-os em um objeto de dados.
 
 ```js
 init.readDefaults(filepath[, ...])
 ```
 
 ### init.renames
-The rename rules for the template.
+
+As regras para renomear o template.
 
 ```js
 var renames = init.renames;
@@ -266,7 +302,8 @@ var renames = init.renames;
 ```
 
 ### init.searchDirs
-An array of directories to search for templates in.
+
+Um array dos diretórios a serem vasculhados no template.
 
 ```js
 var dirs = init.searchDirs;
@@ -275,14 +312,16 @@ var dirs = init.searchDirs;
 ```
 
 ### init.srcpath
-Search init template paths for filename and return an absolute path.
+
+Busca por um arquivo no template init e retorna um caminho absoluto.
 
 ```js
 init.srcpath(filepath[, ...])
 ```
 
 ### init.userDir
-Returns the absolute path to the user's template directory.
+
+Retorna o caminho absoluto para o diretório template do usuário.
 
 ```js
 var dir = init.userDir();
@@ -290,61 +329,62 @@ var dir = init.userDir();
 ```
 
 ### init.writePackageJSON
-Save a package.json file in the destination directory. The callback can be used to post-process properties to add/remove/whatever.
+
+Salva um arquivo `package.json` no diretório de destino. O retorno pode ser usado para propriedades de pós-processamento a fim de adicionar/remover/o que for.
 
 ```js
 init.writePackageJSON(filename, props[, callback])
 ```
 
-## Built-in prompts
+## Prompts embutidos
 
 ### author_email
-Author's email address to use in the `package.json`. Will attempt to find a default value from the user's git config.
+Endereço de email do autor para ser utilizado no `package.json`. Tentará encontrar um valor padrão nas configurações git do usuário.
 
 ### author_name
-Author's full name to use in the `package.json` and copyright notices. Will attempt to find a default value from the user's git config.
+Nome completo do autor para ser utilizado no `package.json`. Tentará encontrar um valor padrão nas configurações git do usuário.
 
 ### author_url
-A public URL to the author's website to use in the `package.json`.
+Uma URL pública do autor para ser utilizada no `package.json`.
 
 ### bin
-A relative path from the project root for a cli script.
+Um caminho relativo do projeto para o script CLI.
 
 ### bugs
-A public URL to the project's issues tracker. Will default to the github issue tracker if the project has a github repository.
+A url do projeto para relatar problemas. Será utilizada a url do repositório no Github, caso exista.
 
 ### description
-A description of the project. Used in the `package.json` and README files.
+Uma descrição do projeto. Usada no `package.json` e nos arquivos `README`.
 
 ### grunt_version
-A valid semantic version range descriptor of Grunt the project requires.
+A versão semanticamente válida do grunt no projeto.
 
 ### homepage
-A public URL to the project's home page. Will default to the github url if a github repository.
+A url para a home page do projeto. Será utilizada a url do repositório no Github, caso exista.
 
 ### jquery_version
-If a jQuery project, the version of jQuery the project requires. Must be a valid semantic version range descriptor.
+Se for um projeto integrado ao jQuery, define a versão necessária para o jQuery. A versão deve ser semanticamente correta para ser validada.
 
-### licenses
-The license(s) for the project. Multiple licenses are separated by spaces. The licenses built-in are: `MIT`, `MPL-2.0`, `GPL-2.0`, and `Apache-2.0`. Defaults to `MIT`. Add custom licenses with [init.addLicenseFiles](#initaddlicensefiles).
+### License
+A licença do projeto. Licenças múltiplas serão separadas por espaço. As licenças embutidas são: `MIT`, `MPL-2.0`, `GPL-2.0` e `Apache-2.0`. O padrão é `MIT`. Adicione licenças customizadas com [init.addLicenseFiles](#initaddlicensefiles).
 
 ### main
-The primary entry point of the project. Defaults to the project name within the `lib` folder.
+O principal ponto de entrada do projeto. O padrão é o nome do projeto dentro da pasta `lib`.
 
 ### name
-The name of the project. Will be used heavily throughout the project template. Defaults to the current working directory.
+O nome do projeto. Será muito usado em todo o template do projeto. O padrão é o diretório de trabalho atual.
 
 ### node_version
-The version of Node.js the project requires. Must be a valid semantic version range descriptor.
+A versão semanticamente válida do Node.js no projeto.
 
 ### npm_test
-The command to run tests on your project. Defaults to `grunt`.
+Comando para rodar testes nos eu projeto. O padrão é `grunt`.
 
 ### repository
-Project's git repository. Defaults to a guess of a github url.
+Respoitório git do projeto. O padrão é um palpite de uma url github.
 
 ### title
-A human readable project name. Defaults to the actual project name altered to be more human readable.
+O nome do projeto legível. O padrão é o nome real do projeto alterado para ser mais legível.
 
 ### version
-The version of the project. Defaults to the first valid semantic version, `0.1.0`.
+A versão do projeto. O padrão é, 0.1.0.
