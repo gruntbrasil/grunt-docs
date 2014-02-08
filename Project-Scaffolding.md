@@ -2,7 +2,7 @@
 
 O grunt-init é uma ferramenta capaz de automatizar a criação de um projeto. Ele constrói uma estrutura completa com base no ambiente atual e em algumas respostas. Os arquivos e conteúdos a serem criados, dependem das escolhas feitas durante as perguntas realizadas.
 
-_Obseravação: este utilitário costumava ser embutido no Grunt como uma tarefa de nome "init". Veja o guia [Atualizando do 0.3 para 0.4](https://github.com/gruntjs/grunt/wiki/Upgrading-from-0.3-to-0.4) do Grunt para mais informações a respeito desta mudança._
+_Observação: este utilitário costumava ser embutido no Grunt como uma tarefa de nome "init". Veja o guia [Atualizando do 0.3 para 0.4](https://github.com/gruntjs/grunt/wiki/Upgrading-from-0.3-to-0.4) do Grunt para mais informações a respeito desta mudança._
 
 ## Instalação
 
@@ -14,7 +14,7 @@ npm install -g grunt-init
 
 Isso fará com que o comando `grunt-init` seja habilitado no seu sistema, sendo possível executá-lo em qualquer local.
 
-_Obseravação: provavelmente, você precise utilizar `sudo` (para OSX, ***nix, BSD, etc) ou rodar este comando como administrador (Windows)._
+_Observação: provavelmente, você precise utilizar `sudo` (para OSX, ***nix, BSD, etc) ou rodar este comando como administrador (Windows)._
 
 
 ## Como utilizar
@@ -378,7 +378,7 @@ O nome do projeto. Será muito usado em todo o template do projeto. O padrão é
 A versão semanticamente válida do Node.js no projeto.
 
 ### npm_test
-Comando para rodar testes nos eu projeto. O padrão é `grunt`.
+Comando para rodar testes no seu projeto. O padrão é `grunt`.
 
 ### repository
 Respoitório git do projeto. O padrão é um palpite de uma url github.
@@ -387,4 +387,4 @@ Respoitório git do projeto. O padrão é um palpite de uma url github.
 O nome do projeto legível. O padrão é o nome real do projeto alterado para ser mais legível.
 
 ### version
-A versão do projeto. O padrão é, 0.1.0.
+A versão do projeto. O padrão é, `0.1.0`.
