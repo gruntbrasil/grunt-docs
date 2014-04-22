@@ -1,9 +1,9 @@
 _Perceba que mesmo que você esteja familiarizado com o grunt, vale a pena ler o novo guia [[Iniciando]]._
 
-Grunt está dividido em duas partes agora: `grunt`, `grunt-cli` e `grunt-init`.
+Grunt está dividido em três partes agora: `grunt`, `grunt-cli` e `grunt-init`.
 
-1. O módulo NPM `grunt` deve ser instalado localmente no seu projeto. Ele contém o código e a lógica para executar as tarefas, carregar os plugins, etc.
-2. O módulo NPM `grunt-cli` deve ser instalado globalmente. Ele disponibiliza o comando `grunt` no seu _PATH_, o qual pode ser executado em qualquer local do seu sistema. Por sí só, ele não faz nada; o seu trabalho é carregar e executar o grunt que foi instalado localmente no seu projeto, independentemente da versão. Para mais informações do porquê desta mudança, por favor leia [npm 1.0: Instalação Global vs Local (em inglês)](http://blog.nodejs.org/2011/03/23/npm-1-0-global-vs-local-installation).
+1. O módulo npm `grunt` deve ser instalado localmente no seu projeto. Ele contém o código e a lógica para executar as tarefas, carregar os plugins, etc.
+2. O módulo npm `grunt-cli` deve ser instalado globalmente. Ele disponibiliza o comando `grunt` no seu _PATH_, o qual pode ser executado em qualquer local do seu sistema. Por sí só, ele não faz nada; o seu trabalho é carregar e executar o grunt que foi instalado localmente no seu projeto, independentemente da versão. Para mais informações do porquê desta mudança, por favor leia [npm 1.0: Instalação Global vs Local (em inglês)](http://blog.nodejs.org/2011/03/23/npm-1-0-global-vs-local-installation).
 3. A tarefa `init` foi "quebrada" em seu próprio módulo npm, `grunt-init`.  Deverá ser instalado globalmente com `npm install -g grunt-init` e executada com o comando `grunt-init`. Nos próximos meses, o [Yeoman](http://yeoman.io/) vai substituir por completo o _grunt-init_.  Veja a [página do projeto grunt-init (em inglês)](https://github.com/gruntjs/grunt-init) para mais informações.
 
 
@@ -15,7 +15,7 @@ Se você está realizando a atualização a partir do Grunt 0.3, certifique-se d
 npm uninstall -g grunt
 ```
 
-_Perceba que para a versão 0.3.x, os nomes dos plugins e as configurações das opções nas tarefas podem ser diferentes dáquelas que foram apresentadas na seção "O Gruntfile"._
+_Perceba que para a versão 0.3.x, os nomes dos plugins e as configurações das opções nas tarefas podem ser diferentes daquelas que foram apresentadas na seção "O Gruntfile"._
 
 _Este arquivo era nomeado como `grunt.js` na versão 0.3.x do Grunt._
 
@@ -34,7 +34,7 @@ _A próxima versão lançada do Grunt será focada na dissociação da arquitetu
 Confira a seção "O Gruntfile" do guia [[Iniciando]] para mais informações.
 
 ## Tarefas nativas são plugins do grunt agora
-As oito tarefas nativas que foram incluídas no Grunt 0.3 agora fazem parte de plugins separados. Cada um é um módulo NPM discreto que deve ser instalado como um plugin através da seção "Carregando plugins e tarefas do Grunt" no guia [[Iniciando]].
+As oito tarefas nativas que foram incluídas no Grunt 0.3 agora fazem parte de plugins separados. Cada um é um módulo npm discreto que deve ser instalado como um plugin através da seção "Carregando plugins e tarefas do Grunt" no guia [[Iniciando]].
 
 - concat → [grunt-contrib-concat](https://github.com/gruntjs/grunt-contrib-concat) plugin
 - init → [grunt-init] utilitário isolado
@@ -56,7 +56,7 @@ O formato de configuração para as tarefas no Grunt 0.4 foram padronizadas e me
 
 `<% %>` as strings de template especificadas como dados de configuração dentro do `Gruntfile` são automaticamente compilados, confira a documentação [[grunt.template]] para mais informações.
 
-**Diretivas foram removidas**, mas a sua funcionalidade foi mantida. Estas substituições podem ser feitas:
+**Diretivas foram removidas**, mas as suas funcionalidades foram mantidas. Estas substituições podem ser feitas:
 
 - `'<config:prop.subprop>'` → `'<%= prop.subprop %>'`
 - `'<json:file.json>'` → `grunt.file.readJSON('file.json')`
@@ -67,7 +67,7 @@ Ao invés de especificar um banner em uma lista de arquivo com `'<banner>'` ou `
 Ao invés de remover individulamnte os banners de cada arquivo com `'<file_strip_banner:file.js>'`, o plugin [grunt-contrib-concat](https://github.com/gruntjs/grunt-contrib-concat) e [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify) possui uma opção para remover/preservar banners.
 
 ## Mudanças nas tarefas customizadas
-Qando especificar uma tarefa customizada, a lista de tarefas deverá ser especifica como um array de strings.
+Quando especificar uma tarefa customizada, a lista de tarefas deverá ser especificada como um array de strings.
 
 ```js
 // v0.3.x (formato antigo)
@@ -84,7 +84,7 @@ grunt my-task:argumento-sem-espacos "other-task:argumento com espacos"
 ```
 
 ## Encoding de caracteres
-O método [file.defaultEncoding](grunt.file#wiki-grunt-file-defaultEncoding) foi adiciona para normalizar o enconding de caracteres, e todos os métodos da `grunt.file` foram atualizados para suportar o enconding específico.
+O método [file.defaultEncoding](grunt.file#wiki-grunt-file-defaultEncoding) foi adicionado para normalizar o enconding de caracteres, e todos os métodos da `grunt.file` foram atualizados para suportar o enconding específico.
 
 ## Helpers
 O sistema de ajuda do Grunt foi removido em favor ao `require` do node. Para um exemplo conciso de como compartilhar funcionalidades entre plugins do Grunt, por favor confira [grunt-lib-legacyhelpers](https://github.com/gruntjs/grunt-lib-legacyhelpers). Os autores de plugins são encorajados a atualizar os seus plugins.
@@ -122,7 +122,7 @@ A API do Grunt percorreu mudanças substanciais, da versão 0.3 para a 0.4.
     - As tarefas registradas, ambos com o [task.registerTask](grunt.task#wiki-grunt-task-registerTask) e [task.registerMultiTask](grunt.task#wiki-grunt-task-registerMultiTask) possuem o método `this.options`.
     - Adicionado o método [task.normalizeMultiTaskFiles](grunt.task#wiki-grunt-task-normalizeMultiTaskFiles) para facilitar a normalização de objetos `files` em multi-tarefas na propriedade `this.file`.
     - Removido os métodos `task.registerHelper` e `task.renameHelper`.
-    - Removido a propriedade `task.searchDirs`.
+    - Removida a propriedade `task.searchDirs`.
     - Removido os métodos `task.expand` `task.expandDirs` `task.expandFiles` `task.getFile` `task.readDefaults` (movido para o [grunt-init]).
 - [grunt.package](grunt#wiki-grunt-package) reflete os metadados armazenados no manifesto `package.json`.
 - [grunt.version](grunt#wiki-grunt-version) é a versão atual do grunt passada como uma string.
@@ -150,9 +150,9 @@ A API do Grunt percorreu mudanças substanciais, da versão 0.3 para a 0.4.
     - O método `this.options` deve ser utilizado com tarefas para normalizar opções. Dentro de uma tarefa, você deve especificar opções padrão como: `var options = this.options({option: 'defaultvalue', ...});`
 
 ### Plugins
-* Um template atualizado do `gruntplugin` foi criado para compatibilidade de plugin e Grunt 0.4, e está disponível em modo standalone [grunt-init].
+* Um template atualizado do `gruntplugin` foi criado para compatibilidade de plugin e Grunt 0.4, e está disponível no modo standalone [grunt-init].
 
 ## Troubleshooting
-* Se você instalou previamente uma versão de desenvolvimento do Grunt 0.4 ou qualquer plugin grunt-contrib, certifique-se de esvaziar o cache do NPM com `npm cache clean` primeiramente para assegurar-se de que estará rodando as últimas versões do Grunt e plugins do grunt-contrib.
+* Se você instalou previamente uma versão de desenvolvimento do Grunt 0.4 ou qualquer plugin grunt-contrib, certifique-se de esvaziar o cache do npm com `npm cache clean` primeiramente para assegurar-se de que estará rodando as últimas versões do Grunt e plugins do grunt-contrib.
 
 [grunt-init]: https://github.com/gruntjs/grunt-init
