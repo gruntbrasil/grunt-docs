@@ -67,7 +67,7 @@ grunt.initConfig({
 ## Arquivos
 Porque a maioria das tarefas realizam operações em arquivos, o Grunt tem poderosas abstrações para declarar nos arquivos que a tarefa deve operar. Existem alguns jeitos de definir o **src-dest** (destino de saída) dos arquivos mapeados, oferecendo varios tipos de aviso e controle. Qualquer multi task vai entender que todos os seguintes formatos, então escolha qual o melhor formato que você precisa.
 
-Todos dos formatos suportam `src` e `desy` mas os formatos "Compact" e "File Array" suportam algumas propriedades adicionais:
+Todos dos formatos suportam `src` e `dest` mas os formatos "Compact" e "File Array" suportam algumas propriedades adicionais:
 
 * `filter` Tanto um [nome de método válido fs.Stats](http://nodejs.org/docs/latest/api/fs.html#fs_class_fs_stats) ou uma função que for passada que corresponda à pasta `src` e retorna `true` ou `false`.
 * `nonull` Quando uma combinação não é encontrada, retorna uma lista de patterns. Caso contrário, uma lista vazia é retornada se não houver combinações. Combinada com a flag do Grunt `--verbose`, esta opção pode ajudar a debugar problemas nos caminhos das pastas.
