@@ -77,7 +77,7 @@ Todos dos formatos suportam `src` e `desy` mas os formatos "Compact" e "File Arr
 * Outras propriedades serão passadas para as lib subjacentes como opções de correspodência. Veja a documentação do [node-glob][] e [minimatch][] para mais opções.
 
 ### Formato compacto
-Esta forma permite um único mapeamento do **src-dest** (destino) por target. Isto é mais comumente usado para tarefas somente-leitura, como a tarega [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint), onde uma única propriedade é necessária, e nenhuma chave `dest` é relevante. Este formato também suporta propriedades adicionais por mapeamento de arquivos no destino e na fonte (src-dest).
+Esta forma permite um único mapeamento do **src-dest** (destino) por target. Isto é mais comumente usado para tarefas somente-leitura, como a tarefa [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint), onde uma única propriedade é necessária, e nenhuma chave `dest` é relevante. Este formato também suporta propriedades adicionais por mapeamento de arquivos no destino e na fonte (src-dest).
 
 ```js
 grunt.initConfig({
